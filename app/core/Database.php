@@ -8,13 +8,15 @@ class Database {
 
     public function __construct() {
         try {
+            // Buat koneksi ke MySQL
             $this->dbh = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->user, $this->pass);
             $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
-            die("Database Error: " . $e->getMessage());
+            die("Koneksi DB gagal: " . $e->getMessage());
         }
     }
 
+    // Contoh pemakaian query
     public function query($sql) {
         return $this->dbh->query($sql);
     }

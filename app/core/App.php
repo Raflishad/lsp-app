@@ -1,6 +1,6 @@
 <?php
 class App {
-    protected $controller = 'HomeController'; // Default controller
+    protected $controller = 'WelcomeController'; // Default controller
     protected $method = 'index';              // Default method
     protected $params = [];                   // Parameter dari URL
 
