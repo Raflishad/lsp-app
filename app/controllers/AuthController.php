@@ -4,7 +4,7 @@ class AuthController extends Controller {
     // Menampilkan form login
     public function index() {
         $data['title'] = 'Login';
-        $this->view('auth/login', $data);
+        $this->view('auth/login', $data, false);
     }
 
     // Proses login
@@ -36,7 +36,7 @@ class AuthController extends Controller {
 
             // Simpan user ke session
             $_SESSION['user'] = $user;
-            header('Location: ' . BASE_URL . '/HomeController');
+            header('Location: ' . BASE_URL . '/DashboardController');
         } else {
             $_SESSION['error'] = 'Username atau password salah.';
             header('Location: ' . BASE_URL . '/AuthController');

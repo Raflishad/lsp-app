@@ -5,11 +5,26 @@ class Controller {
         return new $model;
     }
 
-    public function view($view, $data = []) {
-        extract($data); // biar $title dll langsung tersedia di layout
+    /**
+     * Panggil view
+     * @param string $view - nama view file
+     * @param array $data - data dikirim ke view
+     * @param bool $useLayout - apakah pakai layout? (default: true)
+     */
+    public function view($view, $data = [], $useLayout = true) {
+        extract($data);
         $viewPath = '../app/views/' . $view . '.php';
 
-        // Kirim path view sebagai parameter ke layout
-        require_once '../app/views/layouts/main.php';
+        if (file_exists($viewPath)) {
+            if ($useLayout) {
+                // Jika pakai layout
+                require_once '../app/views/layouts/main.php';
+            } else {
+                // Tanpa layout, langsung tampilkan file view
+                require_once $viewPath;
+            }
+        } else {
+            echo "<p style='color:red;'>View <strong>$view</strong> tidak ditemukan.</p>";
+        }
     }
 }
