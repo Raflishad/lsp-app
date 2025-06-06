@@ -1,29 +1,22 @@
 <?php
 class AuthController extends Controller {
 
-    // Menampilkan form login
     public function index() {
         $data['title'] = 'Login';
         $this->view('auth/login', $data, false);
     }
 
-    // Proses login
     public function login() {
         session_start();
-
-        // Ambil input dari form login
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        // Panggil model User
         $userModel = $this->model('User');
         $user = $userModel->getByUsername($username);
 
-        // Validasi password
         if ($user && password_verify($password, $user['PASSWORD'])) {
             $idUser = $user['ID_USER'];
 
-            // Deteksi peran berdasarkan ID_USER di tabel lain
             if ($userModel->isAsesor($idUser)) {
                 $user['role'] = 'asesor';
             } elseif ($userModel->isSiswa($idUser)) {
@@ -34,7 +27,6 @@ class AuthController extends Controller {
                 exit;
             }
 
-            // Simpan user ke session
             $_SESSION['user'] = $user;
             header('Location: ' . BASE_URL . '/DashboardController');
         } else {
@@ -43,10 +35,43 @@ class AuthController extends Controller {
         }
     }
 
-    // Logout
+    public function register() {
+        $data['title'] = 'Register';
+        $this->view('auth/register', $data, false);
+    }
+
+    public function store() {
+        session_start();
+
+        $username = $_POST['username'];
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $nama = $_POST['nama'];
+        $email = $_POST['email'];
+        $role = $_POST['role']; // asesor atau siswa
+
+        $userModel = $this->model('User');
+
+        // Simpan ke tabel USER
+        $idUser = $userModel->registerUser($username, $password, $nama, $email);
+
+        if ($idUser) {
+            if ($role === 'asesor') {
+                $userModel->registerAsesor($idUser);
+            } elseif ($role === 'siswa') {
+                $userModel->registerSiswa($idUser);
+            }
+
+            $_SESSION['success'] = "Registrasi berhasil. Silakan login.";
+            header('Location: ' . BASE_URL . '/AuthController');
+        } else {
+            $_SESSION['error'] = "Registrasi gagal. Username mungkin sudah dipakai.";
+            header('Location: ' . BASE_URL . '/AuthController/register');
+        }
+    }
+
     public function logout() {
         session_start();
         session_destroy();
-        header('Location: ' . BASE_URL . '/AuthController');
+        header("Location: " . BASE_URL . "/AuthController");
     }
 }

@@ -6,6 +6,7 @@
         <link href="../assets/css/output.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
         <script src="https://cdn.tailwindcss.com"></script>
+        <title>LSP APP | ANTARTIKA 2</title>
         <style>
             .font-poppins {
             font-family: 'Poppins', sans-serif;

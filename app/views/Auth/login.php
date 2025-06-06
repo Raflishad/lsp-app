@@ -24,5 +24,9 @@
         Login
       </button>
     </form>
+
+    <div class="mt-4 text-center text-sm">
+      Belum punya akun? <a href="<?= BASE_URL ?>/AuthController/register" class="text-blue-600 hover:underline">Daftar di sini</a>
+    </div>
   </div>
 </div>
