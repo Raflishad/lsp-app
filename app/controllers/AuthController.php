@@ -28,7 +28,7 @@ class AuthController extends Controller {
             }
 
             $_SESSION['user'] = $user;
-            header('Location: ' . BASE_URL . '/DashboardController');
+            header('Location: ' . BASE_URL . '/BerandaController');
         } else {
             $_SESSION['error'] = 'Username atau password salah.';
             header('Location: ' . BASE_URL . '/AuthController');

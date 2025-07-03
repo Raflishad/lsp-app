@@ -1,22 +1,34 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="<?= isset($_COOKIE['theme']) && $_COOKIE['theme'] === 'dark' ? 'dark' : '' ?>">
 <head>
     <meta charset="UTF-8">
-    <title><?= $title && 'LSP App' ?></title>
+    <title>LSP SMART2 | <?= $title ?></title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="public/assets/img/logo-smart2.png" type="image/png">
-    <link href="public/assets/css/output.css" rel="stylesheet">
+    <link rel="icon" href="../assets/img/logo-smart2.png" type="image/png">
+    <link href="../assets/css/output.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        darkMode: 'class'
+    }
+    </script>
 </head>
-<body class="relative font-poppins scroll-smooth overflow-x-hidden bg-gray-50">
+<body class="relative font-poppins scroll-smooth overflow-x-hidden bg-gray-50 dark:bg-gray-800 dark:text-white">
+    <!-- Efek glow -->
+<div id="cursor-glow" class="pointer-events-none absolute w-40 h-40 rounded-full dark:bg-blue-400/20 blur-3xl opacity-0 transition-opacity duration-300 z-0"></div>
 
         <nav id="navbar" class="fixed top-6 left-1/2 transform -translate-x-1/2 w-[90%] max-w-full px-6 py-3 z-50 rounded-xl sm:rounded-xl md:rounded-full lg:rounded-full text-white transition-all duration-300 backdrop-blur-md md:bg-transparent md:backdrop-blur-0">
 
             <div class="flex items-center justify-between">
-                <img src="../assets/img/logo2.png" alt="Logo" class="h-8">
+                <!-- Logo untuk Light Mode -->
+                <img src="../assets/img/logo2.png" alt="Logo" class="h-8 block dark:hidden">
+
+                <!-- Logo untuk Dark Mode -->
+                <img src="../assets/img/logo1.png" alt="Logo" class="h-8 hidden dark:block">
+
 
                 <button id="menu-toggle" class="md:hidden text-blue-600 focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -26,18 +38,27 @@
                 </button>
 
                 <div class="hidden md:flex space-x-8 nav-links">
-                    <a href="beranda-siswa.html" class="px-4 py-2 transition-colors duration-300 hover:scale-110 text-blue-500 nav-link">Beranda</a>
-                    <a href="berkas.html" class="px-4 py-2 transition-colors duration-300 hover:scale-110 text-blue-500 nav-link">Dokumen</a>
-                    <a href="asesmen-siswa.html" class="px-4 py-2 transition-colors duration-300 hover:scale-110 text-blue-500 nav-link">Asesmen Mandiri</a>
+                    <a href="<?= BASE_URL ?>/BerandaController" class="px-4 py-2 transition-colors duration-300 hover:scale-110 text-blue-500 nav-link dark:text-white">Beranda</a>
+                    <a href="<?= BASE_URL ?>/BerkasController" class="px-4 py-2 transition-colors duration-300 hover:scale-110 text-blue-500 nav-link dark:text-white">Dokumen</a>
+                    <a href="#" class="px-4 py-2 transition-colors duration-300 hover:scale-110 text-blue-500 nav-link dark:text-white">Asesmen Mandiri</a>
                 </div>
 
+                
                 <div class="hidden md:flex items-center space-x-4">
                     <a href="#" title="Profil" aria-label="Profil" class="w-10 h-10 bg-blue-100 text-blue-800 rounded-full flex items-center justify-center hover:scale-105 transition">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" class="w-5 h-5">
-                                <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"/>
+                            <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"/>
                         </svg>
                     </a>
-                    <a href="index.html" title="Logout" class="w-10 h-10 bg-blue-900 text-white rounded-full flex items-center justify-center hover:scale-105 transition">
+                    <button id="toggle-dark" title="Toggle Dark Mode" class="w-10 h-10 bg-gray-200 dark:bg-blue-500 text-black dark:text-white rounded-full flex items-center justify-center hover:scale-105 transition">
+                        <svg id="dark-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.49-8.49l-.71.71m-13.56 0l-.71-.71m15.56-5.66l-.71.71m-13.56 0l-.71-.71M4 12H3m18 0h-1M12 5a7 7 0 100 14a7 7 0 000-14z" />
+                        </svg>
+                        <svg id="light-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 2zm0 12a4 4 0 100-8 4 4 0 000 8zm0 4.75a.75.75 0 01-.75-.75v-1.5a.75.75 0 011.5 0v1.5a.75.75 0 01-.75.75zM3.22 5.28a.75.75 0 011.06 0l1.06 1.06a.75.75 0 01-1.06 1.06L3.22 6.34a.75.75 0 010-1.06zm11.44 11.44a.75.75 0 011.06 0l1.06 1.06a.75.75 0 11-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zM2 10a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5A.75.75 0 012 10zm14.75-.75a.75.75 0 000 1.5h1.5a.75.75 0 000-1.5h-1.5zM3.22 14.72a.75.75 0 011.06 0l1.06 1.06a.75.75 0 11-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm11.44-11.44a.75.75 0 011.06 0l1.06 1.06a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06z" />
+                        </svg>
+                    </button>
+                    <a href="<?= BASE_URL ?>/AuthController/logout" title="Logout" class="w-10 h-10 bg-blue-900 text-white rounded-full flex items-center justify-center hover:scale-105 transition">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5" fill="currentColor">
                             <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/>
                         </svg>
@@ -50,7 +71,7 @@
                 <a href="berkas.html" class="block px-4 py-2 text-white hover:scale-105 hover:underline transition">Dokumen</a>
                 <a href="#" class="block px-4 py-2 text-white hover:scale-105 hover:underline transition">Asesmen Mandiri</a>
                 <a href="asesmen-siswa.html" class="block px-4 py-2 text-white hover:scale-105 hover:underline transition">Profil</a>
-                <a href="index.html" class="block mx-auto px-6 py-2 bg-blue-900 text-white rounded-full font-bold hover:scale-105 transition">
+                <a href="<?= BASE_URL ?>/AuthController/logout" class="block mx-auto px-6 py-2 bg-blue-900 text-white rounded-full font-bold hover:scale-105 transition">
                     Logout
                 </a>
             </div>
@@ -174,5 +195,61 @@
             window.addEventListener('resize', handleScroll);
             document.addEventListener('DOMContentLoaded', handleScroll);
         </script>
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+            const toggleBtn = document.getElementById('toggle-dark');
+            const darkIcon = document.getElementById('dark-icon');
+            const lightIcon = document.getElementById('light-icon');
+
+            // Cek dari cookie jika ada
+            const theme = document.cookie.split('; ').find(row => row.startsWith('theme='));
+            const isDark = theme && theme.split('=')[1] === 'dark';
+
+            if (isDark) {
+            html.classList.add('dark');
+            darkIcon.classList.remove('hidden');
+            } else {
+            html.classList.remove('dark');
+            lightIcon.classList.remove('hidden');
+            }
+
+            toggleBtn.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isNowDark = html.classList.contains('dark');
+
+            if (isNowDark) {
+                darkIcon.classList.remove('hidden');
+                lightIcon.classList.add('hidden');
+                document.cookie = "theme=dark; path=/; max-age=31536000"; // 1 tahun
+            } else {
+                darkIcon.classList.add('hidden');
+                lightIcon.classList.remove('hidden');
+                document.cookie = "theme=light; path=/; max-age=31536000";
+            }
+            });
+        });
+        </script>
+
+        <script>
+  const glow = document.getElementById('cursor-glow');
+  const heroSection = document.getElementById('hero');
+
+  heroSection.addEventListener('mouseenter', () => {
+    glow.classList.remove('opacity-0');
+  });
+
+  heroSection.addEventListener('mouseleave', () => {
+    glow.classList.add('opacity-0');
+  });
+
+  heroSection.addEventListener('mousemove', (e) => {
+    const rect = heroSection.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    glow.style.transform = `translate(${x - 80}px, ${y - 80}px)`;
+  });
+</script>
+
 </body>
 </html>

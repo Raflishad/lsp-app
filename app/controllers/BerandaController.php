@@ -1,5 +1,5 @@
 <?php
-class DashboardController extends Controller {
+class BerandaController extends Controller {
 
     public function index() {
         session_start();
