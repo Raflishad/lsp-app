@@ -39,7 +39,7 @@
                                 </svg>
                             </div>
                         </div>
-                        <p class="text-gray-500 text-sm dark:text-white">Anda telah mengunggah dokumen pendukung yang dibutuhkan. Klik <a href="<?= BASE_URL ?>/BerkasController" class="text-blue-600 hover:underline">di sini</a> untuk melihat lebih lengkap.</p>
+                        <p class="text-gray-500 text-sm dark:text-white">Anda telah mengunggah dokumen pendukung yang dibutuhkan. Klik <a href="<?= BASE_URL ?>/SiswaController/berkas" class="text-blue-600 hover:underline">di sini</a> untuk melihat lebih lengkap.</p>
                     </div>
 
                     <div class="bg-white shadow-xl rounded-2xl p-8 text-center dark:bg-[#0c0e24] dark:text-white">
