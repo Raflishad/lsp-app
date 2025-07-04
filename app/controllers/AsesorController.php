@@ -3,7 +3,7 @@
 require_once '../app/middleware/AuthMiddleware.php';
 class AsesorController extends Controller {
 
-    public function beranda() {
+    public function index() {
         AuthMiddleware::requireRole('asesor');   
 
         $data['title'] = 'Beranda Asesor';

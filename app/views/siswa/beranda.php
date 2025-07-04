@@ -54,7 +54,7 @@
                         </div>
                         <p class="text-gray-500 text-sm dark:text-white">
                             Harap segera lengkapi asesmen mandiri untuk melanjutkan proses berikutnya. Klik 
-                            <a href="#asesmen-mandiri" class="text-blue-600 hover:underline">di sini</a>.
+                            <a href="<?= BASE_URL ?>/SiswaController/asesmen" class="text-blue-600 hover:underline">di sini</a>.
                         </p>
                     </div>
 

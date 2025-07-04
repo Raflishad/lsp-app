@@ -29,9 +29,9 @@ class AuthController extends Controller {
 
             $_SESSION['user'] = $user;
                 if ($user['role'] === 'siswa') {
-                header("Location: " . BASE_URL . "/SiswaController/beranda");
+                header("Location: " . BASE_URL . "/SiswaController/index");
                 } elseif ($user['role'] === 'asesor') {
-                    header("Location: " . BASE_URL . "/AsesorController/beranda");
+                    header("Location: " . BASE_URL . "/AsesorController/index");
                 } else {
                     echo "Role tidak dikenali.";
                 }

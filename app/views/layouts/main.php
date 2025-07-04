@@ -8,6 +8,7 @@
     <link rel="icon" href="../../assets/img/logo-smart2.png" type="image/png">
     <link href="../../assets/css/output.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -38,12 +39,17 @@
                 </button>
 
                 <div class="hidden md:flex space-x-8 nav-links">
-                    <a href="<?= BASE_URL ?>/SiswaController/beranda" class="px-4 py-2 transition-colors duration-300 hover:scale-110 text-blue-500 nav-link dark:text-white">Beranda</a>
-                    <a href="<?= BASE_URL ?>/SiswaController/berkas" class="px-4 py-2 transition-colors duration-300 hover:scale-110 text-blue-500 nav-link dark:text-white">Dokumen</a>
-                    <a href="#" class="px-4 py-2 transition-colors duration-300 hover:scale-110 text-blue-500 nav-link dark:text-white">Asesmen Mandiri</a>
+                    <?php if ($_SESSION['user']['role'] == 'siswa'): ?>
+                        <a href="<?= BASE_URL ?>/SiswaController/index" class="px-4 py-2 transition-colors duration-300 hover:scale-110 text-blue-500 nav-link dark:text-white">Beranda</a>
+                        <a href="<?= BASE_URL ?>/SiswaController/berkas" class="px-4 py-2 transition-colors duration-300 hover:scale-110 text-blue-500 nav-link dark:text-white">Dokumen</a>
+                        <a href="<?= BASE_URL ?>/SiswaController/asesmen" class="px-4 py-2 transition-colors duration-300 hover:scale-110 text-blue-500 nav-link dark:text-white">Asesmen Mandiri</a>
+                    <?php elseif ($_SESSION['user']['role'] == 'asesor'): ?>
+                        <a href="<?= BASE_URL ?>/AsesorController/index" class="px-4 py-2 transition-colors duration-300 hover:scale-110 text-green-500 nav-link dark:text-white">Dashboard</a>
+                        <a href="<?= BASE_URL ?>/AsesorController/peserta" class="px-4 py-2 transition-colors duration-300 hover:scale-110 text-green-500 nav-link dark:text-white">Daftar Peserta</a>
+                        <a href="<?= BASE_URL ?>/AsesorController/penilaian" class="px-4 py-2 transition-colors duration-300 hover:scale-110 text-green-500 nav-link dark:text-white">Penilaian</a>
+                    <?php endif; ?>
                 </div>
-
-                
+      
                 <div class="hidden md:flex items-center space-x-4">
                     <a href="#" title="Profil" aria-label="Profil" class="w-10 h-10 bg-blue-100 text-blue-800 rounded-full flex items-center justify-center hover:scale-105 transition">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" class="w-5 h-5">
@@ -58,19 +64,27 @@
                             <path d="M10 2a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 2zm0 12a4 4 0 100-8 4 4 0 000 8zm0 4.75a.75.75 0 01-.75-.75v-1.5a.75.75 0 011.5 0v1.5a.75.75 0 01-.75.75zM3.22 5.28a.75.75 0 011.06 0l1.06 1.06a.75.75 0 01-1.06 1.06L3.22 6.34a.75.75 0 010-1.06zm11.44 11.44a.75.75 0 011.06 0l1.06 1.06a.75.75 0 11-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zM2 10a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5A.75.75 0 012 10zm14.75-.75a.75.75 0 000 1.5h1.5a.75.75 0 000-1.5h-1.5zM3.22 14.72a.75.75 0 011.06 0l1.06 1.06a.75.75 0 11-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm11.44-11.44a.75.75 0 011.06 0l1.06 1.06a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06z" />
                         </svg>
                     </button>
-                    <a href="<?= BASE_URL ?>/AuthController/logout" title="Logout" class="w-10 h-10 bg-blue-900 text-white rounded-full flex items-center justify-center hover:scale-105 transition">
+                    <button type="button" id="btnLogout" title="Logout" class="w-10 h-10 bg-blue-900 text-white rounded-full flex items-center justify-center hover:scale-105 transition">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5" fill="currentColor">
                             <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/>
                         </svg>
-                    </a>
+                    </button>
                 </div>
             </div>
 
             <div id="mobile-menu" class="md:hidden hidden flex-col mt-4 space-y-3 text-center transition-all duration-300">
-                <a href="beranda-siswa.html" class="block px-4 py-2 text-white hover:scale-105 hover:underline transition">Beranda</a>
-                <a href="berkas.html" class="block px-4 py-2 text-white hover:scale-105 hover:underline transition">Dokumen</a>
-                <a href="#" class="block px-4 py-2 text-white hover:scale-105 hover:underline transition">Asesmen Mandiri</a>
-                <a href="asesmen-siswa.html" class="block px-4 py-2 text-white hover:scale-105 hover:underline transition">Profil</a>
+                <?php if ($_SESSION['user']['role'] == 'siswa'): ?>
+                    <a href="<?= BASE_URL ?>/SiswaController/index" class="block px-4 py-2 text-white hover:scale-105 hover:underline transition">Beranda</a>
+                    <a href="<?= BASE_URL ?>/SiswaController/berkas" class="block px-4 py-2 text-white hover:scale-105 hover:underline transition">Dokumen</a>
+                    <a href="<?= BASE_URL ?>/SiswaController/asesmen" class="block px-4 py-2 text-white hover:scale-105 hover:underline transition">Asesmen Mandiri</a>
+                    <a href="#" class="block px-4 py-2 text-white hover:scale-105 hover:underline transition">Profil</a>
+                <?php elseif ($_SESSION['user']['role'] == 'asesor'): ?>
+                    <a href="<?= BASE_URL ?>/AsesorController/index" class="block px-4 py-2 text-white hover:scale-105 hover:underline transition">Dashboard</a>
+                    <a href="<?= BASE_URL ?>/AsesorController/peserta" class="block px-4 py-2 text-white hover:scale-105 hover:underline transition">Daftar Peserta</a>
+                    <a href="<?= BASE_URL ?>/AsesorController/penilaian" class="block px-4 py-2 text-white hover:scale-105 hover:underline transition">Penilaian</a>
+                    <a href="#" class="block px-4 py-2 text-white hover:scale-105 hover:underline transition">Profil</a>
+                <?php endif; ?>
+
                 <a href="<?= BASE_URL ?>/AuthController/logout" class="block mx-auto px-6 py-2 bg-blue-900 text-white rounded-full font-bold hover:scale-105 transition">
                     Logout
                 </a>
@@ -131,6 +145,25 @@
                 </div>
             </div>
         </footer>
+
+                <!-- Modal Konfirmasi Logout -->
+        <div id="logoutModal" class="fixed inset-0 z-50 bg-black/50 flex items-center justify-center hidden">
+        <div class="bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-white p-6 rounded-lg w-[90%] max-w-sm shadow-lg">
+            <div class="flex flex-col items-center">
+            <div class="mb-4 flex justify-center items-center w-[62px] h-[62px] rounded-full border-4 border-yellow-50 bg-yellow-100 text-yellow-500">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"></path>
+                </svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Sign out</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-300 text-center">Apakah Anda yakin ingin logout dari akun Anda?</p>
+            </div>
+            <div class="mt-6 flex justify-center gap-4">
+            <a href="<?= BASE_URL ?>/AuthController/logout" class="py-2 px-4 bg-red-600 text-white rounded-md hover:bg-red-700 text-sm">Sign out</a>
+            <button id="cancelLogout" class="py-2 px-4 bg-gray-300 text-gray-800 rounded-md hover:bg-gray-400 text-sm">Cancel</button>
+            </div>
+        </div>
+        </div>
         
         <a href="#hero" id="scrollTopBtn" class="hidden fixed bottom-6 right-6 z-50 bg-[#5461d6] text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:bg-[#333858] hover:scale-110">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -232,24 +265,45 @@
         </script>
 
         <script>
-  const glow = document.getElementById('cursor-glow');
-  const heroSection = document.getElementById('hero');
+        const glow = document.getElementById('cursor-glow');
+        const heroSection = document.getElementById('hero');
 
-  heroSection.addEventListener('mouseenter', () => {
-    glow.classList.remove('opacity-0');
-  });
+        heroSection.addEventListener('mouseenter', () => {
+            glow.classList.remove('opacity-0');
+        });
 
-  heroSection.addEventListener('mouseleave', () => {
-    glow.classList.add('opacity-0');
-  });
+        heroSection.addEventListener('mouseleave', () => {
+            glow.classList.add('opacity-0');
+        });
 
-  heroSection.addEventListener('mousemove', (e) => {
-    const rect = heroSection.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    glow.style.transform = `translate(${x - 80}px, ${y - 80}px)`;
-  });
-</script>
+        heroSection.addEventListener('mousemove', (e) => {
+            const rect = heroSection.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            glow.style.transform = `translate(${x - 80}px, ${y - 80}px)`;
+        });
+        </script>
+
+        <script>
+        const btnLogout = document.getElementById('btnLogout');
+        const logoutModal = document.getElementById('logoutModal');
+        const cancelLogout = document.getElementById('cancelLogout');
+
+        btnLogout.addEventListener('click', () => {
+            logoutModal.classList.remove('hidden');
+        });
+
+        cancelLogout.addEventListener('click', () => {
+            logoutModal.classList.add('hidden');
+        });
+
+        // Tutup modal jika klik di luar kotak modal
+        logoutModal.addEventListener('click', (e) => {
+            if (e.target === logoutModal) {
+            logoutModal.classList.add('hidden');
+            }
+        });
+        </script>
 
 </body>
 </html>

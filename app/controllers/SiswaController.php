@@ -3,7 +3,7 @@
 require_once '../app/middleware/AuthMiddleware.php';
 class SiswaController extends Controller {
 
-    public function beranda() {
+    public function index() {
         AuthMiddleware::requireRole('siswa');
 
         $data['title'] = 'Beranda Siswa';
@@ -24,5 +24,7 @@ class SiswaController extends Controller {
         $data['title'] = 'Asesmen Mandiri';
         $this->view('siswa/asesmen', $data);
     }
+
+    
 }
 
