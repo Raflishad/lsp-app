@@ -2,9 +2,15 @@
 
 require_once '../app/middleware/AuthMiddleware.php';
 class AsesorController extends Controller {
+    
+    private $user;
 
-    public function index() {
-        AuthMiddleware::requireRole('asesor');   
+    public function __construct() {
+        AuthMiddleware::requireRole('asesor');
+        $this->user = $_SESSION['user'];
+    }
+
+    public function index() {  
 
         $data['title'] = 'Beranda Asesor';
         $data['nama'] = $_SESSION['user']['NAMA'];
@@ -13,7 +19,6 @@ class AsesorController extends Controller {
     }
 
     public function verifikasi() {
-        AuthMiddleware::requireRole('asesor');
 
         $data['title'] = 'Verifikasi Siswa';
         $this->view('asesor/verifikasi', $data);

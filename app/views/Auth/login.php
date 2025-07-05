@@ -16,7 +16,7 @@
             <div class="text-center mb-6" data-aos="fade-down" data-aos-delay="100" data-aos-duration="1000">
                 <h2 class="text-xl sm:text-2xl font-semibold text-gray-700">Silahkan Login</h2>
                 <p class="text-sm text-gray-500">Masukkan username dan password!</p>
-                <?php session_start(); if (isset($_SESSION['error'])): ?>
+                <?php if (isset($_SESSION['error'])): ?>
                   <div class="text-red-500 text-sm">
                     <?= $_SESSION['error']; unset($_SESSION['error']); ?>
                   </div>

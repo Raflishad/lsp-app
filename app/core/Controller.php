@@ -27,4 +27,5 @@ class Controller {
             echo "<p style='color:red;'>View <strong>$view</strong> tidak ditemukan.</p>";
         }
     }
+    
 }

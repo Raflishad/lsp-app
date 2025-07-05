@@ -12,7 +12,7 @@
     </head>
     <body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#2D336B] to-[#0C0E24] font-poppins px-4">
 
-        <?php session_start(); if (isset($_SESSION['error'])): ?>
+        <?php if (isset($_SESSION['error'])): ?>
       <div class="mb-4 text-red-500 text-sm"><?= $_SESSION['error']; unset($_SESSION['error']); ?></div>
     <?php endif; ?>
 
@@ -61,7 +61,7 @@
 
                 <div class="mb-6 text-left">
                 <label for="role" class="block text-sm font-medium text-gray-600 mb-1">Role</label>
-                    <select name="role" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+                    <select name="role" id="role" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
                         <option value="" >Sebagai</option>
                         <option value="asesor">Asesor</option>
                         <option value="siswa">Siswa</option>

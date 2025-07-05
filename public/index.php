@@ -1,7 +1,13 @@
 <?php
-require_once '../config/config.php';
-require_once '../app/core/App.php';
-require_once '../app/core/Controller.php';
-require_once '../app/core/Database.php';
+// Mulai session sekali di sini
+session_start();
+
+// Load config
+require_once dirname(__DIR__) . '/config/config.php';
+
+// Autoload core files
+require_once dirname(__DIR__) . '/app/core/App.php';
+require_once dirname(__DIR__) . '/app/core/Controller.php';
+require_once dirname(__DIR__) . '/app/core/Database.php';
 
 $app = new App();

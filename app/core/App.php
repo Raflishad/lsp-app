@@ -8,14 +8,21 @@ class App {
         $url = $this->parseURL();
 
         // Cek apakah controller sesuai file yang ada
-        if (file_exists('../app/controllers/' . $url[0] . '.php')) {
+        if (isset($url[0]) && preg_match('/^[a-zA-Z0-9]+$/', $url[0]) && file_exists("../app/controllers/{$url[0]}.php")) {
             $this->controller = $url[0];
             unset($url[0]);
+        }
+        
+        if (!file_exists("../app/controllers/{$this->controller}.php")) {
+            http_response_code(404);
+            require_once '../app/views/errors/404.php';
+            exit;
         }
 
         // Load controller
         require_once '../app/controllers/' . $this->controller . '.php';
         $this->controller = new $this->controller;
+
 
         // Cek method di dalam controller
         if (isset($url[1]) && method_exists($this->controller, $url[1])) {

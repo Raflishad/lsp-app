@@ -32,7 +32,17 @@
                     <div class="bg-white shadow-xl rounded-2xl p-8 text-center dark:bg-[#0c0e24] dark:text-white">
                         <h3 class="text-2xl font-semibold text-blue-500 mb-3 dark:text-blue-300">Upload Dokumen Pendukung</h3>
                         <p class="text-gray-600 mb-5 dark:text-white">Dokumen pendukung digunakan untuk verifikasi pendaftaran asesmen.</p>
+                        <?php if (!$identitas && count($dokumen) < 3): ?>
                         <div class="flex justify-center mb-5">
+                            <div class="bg-red-600 rounded-full p-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="text-gray-500 text-sm dark:text-white">Harap segera lengkapi dokumen pendukung yang dibutuhkan. Klik <a href="<?= BASE_URL ?>/SiswaController/berkas" class="text-blue-600 hover:underline">di sini.</a></p>
+                        <?php else : ?>
+                            <div class="flex justify-center mb-5">
                             <div class="bg-green-600 rounded-full p-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -40,6 +50,7 @@
                             </div>
                         </div>
                         <p class="text-gray-500 text-sm dark:text-white">Anda telah mengunggah dokumen pendukung yang dibutuhkan. Klik <a href="<?= BASE_URL ?>/SiswaController/berkas" class="text-blue-600 hover:underline">di sini</a> untuk melihat lebih lengkap.</p>
+                        <?php endif; ?>
                     </div>
 
                     <div class="bg-white shadow-xl rounded-2xl p-8 text-center dark:bg-[#0c0e24] dark:text-white">
