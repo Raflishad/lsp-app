@@ -27,34 +27,34 @@
                                                 <td class="border px-4 py-2">Penilaian (K / BK)</td>
                                                 <td class="border px-4 py-2">Bukti Pendukung</td>
                                             </tr>
-                                            <tr class="hover:bg-gray-50 halaman1 dark:hover:bg-gray-600">
+                                            <tr class="hover:bg-gray-50 halaman1 dark:hover:bg-gray-800">
                                                 <td class="border px-4 py-2">1.1. Apakah anda dapat menetapkan pengawasan K3 sesuai UU?</td>
                                                 <td class="border px-4 py-2 text-center">
                                                     <label class="mr-3"><input type="radio" name="q1" class="mr-1">K</label>
                                                     <label><input type="radio" name="q1" class="mr-1">BK</label>
                                                 </td>
                                                 <td class="border px-4 py-2">
-                                                    <input type="text" class="w-full border border-gray-300 rounded px-2 py-2" placeholder="Tulis bukti...">
+                                                    <input type="text" class="w-full border border-gray-300 rounded px-2 py-2 dark:focus:outline-none" placeholder="Tulis bukti...">
                                                 </td>
                                             </tr>
-                                            <tr class="hover:bg-gray-50 halaman1 dark:hover:bg-gray-600">
+                                            <tr class="hover:bg-gray-50 halaman1 dark:hover:bg-gray-800">
                                                 <td class="border px-4 py-2">1.2. Apakah anda dapat meninjau dan melaporkan prosedur keselamatan?</td>
                                                 <td class="border px-4 py-2 text-center">
                                                     <label class="mr-3"><input type="radio" name="q2" class="mr-1">K</label>
                                                     <label><input type="radio" name="q2" class="mr-1">BK</label>
                                                 </td>
                                                 <td class="border px-4 py-2">
-                                                    <input type="text" class="w-full border border-gray-300 rounded px-2 py-2" placeholder="Tulis bukti...">
+                                                    <input type="text" class="w-full border border-gray-300 rounded px-2 py-2 dark:focus:outline-none" placeholder="Tulis bukti...">
                                                 </td>
                                             </tr>
-                                            <tr class="hover:bg-gray-50 halaman1 dark:hover:bg-gray-600">
+                                            <tr class="hover:bg-gray-50 halaman1 dark:hover:bg-gray-800">
                                                 <td class="border px-4 py-2">1.3. Apakah anda melaksanakan prosedur keselamatan kerja?</td>
                                                 <td class="border px-4 py-2 text-center">
                                                     <label class="mr-3"><input type="radio" name="q3" class="mr-1">K</label>
                                                     <label><input type="radio" name="q3" class="mr-1">BK</label>
                                                 </td>
                                                 <td class="border px-4 py-2">
-                                                    <input type="text" class="w-full border border-gray-300 rounded px-2 py-2" placeholder="Tulis bukti...">
+                                                    <input type="text" class="w-full border border-gray-300 rounded px-2 py-2 dark:focus:outline-none" placeholder="Tulis bukti...">
                                                 </td>
                                             </tr>
                                         </tbody>

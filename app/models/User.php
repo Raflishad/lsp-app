@@ -31,7 +31,7 @@ class User {
         // Masukkan ke USER
         $this->db->query("INSERT INTO USER (USERNAME, PASSWORD, NAMA, EMAIL) VALUES (:username, :password, :nama, :email)");
         $this->db->bind(':username', $username);
-        $this->db->bind(':password', $password); // sebaiknya sudah di-hash sebelumnya
+        $this->db->bind(':password', $password);
         $this->db->bind(':nama', $nama);
         $this->db->bind(':email', $email);
         $this->db->execute();
