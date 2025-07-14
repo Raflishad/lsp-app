@@ -6,6 +6,9 @@ if (isset($dokumen)) {
         $mapDokumen[$d['JENIS_DOKUMEN']] = $d['URL_DOKUMEN'];
     }
 }
+
+$fullPath = $identitas['URL_KARTU_IDENTITAS'];
+$filename = basename($fullPath);
 ?>
 
 <section class="pt-28 pb-16 px-6" id="hero">
@@ -14,21 +17,43 @@ if (isset($dokumen)) {
                     <h2 class="text-2xl md:text-3xl font-bold text-blue-800 mb-10 text-center dark:text-blue-400">Upload Kartu Identitas</h2>
                     <?php $jenis = $identitas['JENIS_KARTU_IDENTITAS'] ?? ''; ?>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1  dark:text-white">Jenis Kartu Identitas</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-1 dark:text-white">Jenis Kartu Identitas</label>
                         <div class="flex items-center gap-6 mt-1">
-                            <label class="flex items-center">
-                                <input type="radio" name="jenisIdentitas" value="KTP" <?= $jenis === 'KTP' ? 'checked' : '' ?><?= $jenis ? 'disabled' : '' ?> class="text-blue-600 focus:ring-blue-500" />
-                                <span class="ml-2 text-sm text-gray-700 dark:text-white">KTP</span>
-                            </label>
-                            <label class="flex items-center">
-                                <input type="radio" name="jenisIdentitas" value="Kartu Pelajar" <?= $jenis === 'Kartu Pelajar' ? 'checked' : '' ?><?= $jenis ? 'disabled' : '' ?> class="text-blue-600 focus:ring-blue-500" />
-                                <span class="ml-2 text-sm text-gray-700 dark:text-white">Kartu Pelajar</span>
-                            </label>
+                            <?php if ($jenis === 'KTP'): ?>
+                                <label class="flex items-center">
+                                    <input type="radio" name="jenisIdentitas_disabled" value="KTP"
+                                        checked
+                                        disabled
+                                        class="accent-blue-600 pointer-events-none" />
+                                    <span class="ml-2 text-sm text-gray-700 dark:text-white">KTP</span>
+                                    <input type="hidden" name="jenisIdentitas" value="KTP" />
+                                </label>
+                            <?php elseif ($jenis === 'Kartu Pelajar'): ?>
+                                <label class="flex items-center">
+                                    <input type="radio" name="jenisIdentitas_disabled" value="Kartu Pelajar"
+                                        checked
+                                        disabled
+                                        class="accent-blue-600 pointer-events-none" />
+                                    <span class="ml-2 text-sm text-gray-700 dark:text-white">Kartu Pelajar</span>
+                                    <input type="hidden" name="jenisIdentitas" value="Kartu Pelajar" />
+                                </label>
+                            <?php else: ?>
+                                <label class="flex items-center">
+                                    <input type="radio" name="jenisIdentitas" value="KTP"
+                                        class="accent-blue-600 focus:ring-blue-500" required />
+                                    <span class="ml-2 text-sm text-gray-700 dark:text-white">KTP</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="jenisIdentitas" value="Kartu Pelajar"
+                                        class="accent-blue-600 focus:ring-blue-500" required />
+                                    <span class="ml-2 text-sm text-gray-700 dark:text-white">Kartu Pelajar</span>
+                                </label>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="relative">
                         <label for="nomorKartu" class="block text-sm font-medium text-gray-700 mb-1 dark:text-white">Nomor Kartu Identitas</label>
-                        <input type="number" id="nomorKartu" name="nomorKartu" value="<?= $identitas['NOMOR_KARTU_IDENTITAS'] ?? '' ?>"<?= $identitas ? 'disabled' : 'required' ?> 
+                        <input type="number" id="nomorKartu" name="nomorKartu" value="<?= $identitas['NOMOR_KARTU_IDENTITAS'] ?? '' ?>"<?= $identitas ? 'readonly' : 'required' ?> 
                         class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
                         <?php if (!empty($identitas['NOMOR_KARTU_IDENTITAS'])): ?>
                         <div class="absolute inset-y-0 top-6 right-3 flex items-center pointer-events-none">
@@ -45,7 +70,7 @@ if (isset($dokumen)) {
 
                         <?php if (!empty($identitas['URL_KARTU_IDENTITAS'])): ?>
                             <!-- Jika ada data, tampilkan tombol link untuk lihat file -->
-                            <input type="text" id="fileIdentitas" name="fileIdentitas" accept=".pdf,.jpg,.jpeg,.png" value="<?= $identitas['URL_KARTU_IDENTITAS'] ?? '' ?>"
+                            <input type="text" id="fileIdentitas" name="fileIdentitas" accept=".pdf,.jpg,.jpeg,.png" value="<?= $filename ?? '' ?>"
                             <?= isset($identitas['URL_KARTU_IDENTITAS']) ? 'disabled' : 'required' ?>
                             class="w-full px-3 py-2 border border-gray-300 rounded-lg file:mr-4 file:py-2 file:px-4 file:border-0 file:text-sm file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200" />
                             <div class="absolute inset-y-0 bottom-12 right-3 flex items-center pointer-events-none">
@@ -54,7 +79,7 @@ if (isset($dokumen)) {
                                 </svg>
                             </div>
                             <p class="text-sm text-gray-500 mt-1">Ukuran maksimal 2MB</p>
-                            <a href="<?= BASE_URL . '/' . $identitas['URL_KARTU_IDENTITAS'] ?>"
+                            <a href="<?= BASE_URL . '/' . $fullPath ?>"
                             target="_blank" 
                             class="mt-2 text-sm text-blue-700 hover:underline mb-6 inline-block">
                                 Lihat File
@@ -76,8 +101,8 @@ if (isset($dokumen)) {
                         <label for="pasFoto" class="block text-sm font-medium text-gray-700 mb-1 dark:text-white mt-10">Pas Foto Formal Terbaru (JPG/PNG)</label>
                         <?php if (!empty($mapDokumen['pas_foto'])): ?>
                             <!-- Jika ada data, tampilkan tombol link untuk lihat file -->
-                            <input type="text" id="pasFoto" name="pasFoto" accept=".jpg,.jpeg,.png" value="<?= $mapDokumen['pas_foto'] ?? '' ?>"
-                            <?= isset($mapDokumen['pas_foto']) ? 'disabled' : 'required' ?>
+                            <input type="text" id="pasFoto" name="pasFoto" accept=".jpg,.jpeg,.png" value="<?= isset($mapDokumen['pas_foto']) ? basename($mapDokumen['pas_foto']) : '' ?>"
+                            <?= isset($mapDokumen['pas_foto']) ? 'readonly' : 'required' ?>
                             class="w-full px-3 py-2 border border-gray-300 rounded-lg file:mr-4 file:py-2 file:px-4 file:border-0 file:text-sm file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200" />
                             <div class="absolute inset-y-0 bottom-12 right-3 flex items-center pointer-events-none">
                                 <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
@@ -101,8 +126,8 @@ if (isset($dokumen)) {
                         <label for="sertifikat" class="block text-sm font-medium text-gray-700 mb-1 dark:text-white">Sertifikat PKL/Magang (PDF/JPG/PNG)</label>
                         <?php if (!empty($mapDokumen['sertifikat'])): ?>
                             <!-- Jika ada data, tampilkan tombol link untuk lihat file -->
-                            <input type="text" id="sertifikat" name="sertifikat" accept=".pdf,.jpg,.jpeg,.png" value="<?= $mapDokumen['sertifikat'] ?? '' ?>"
-                            <?= isset($mapDokumen['sertifikat']) ? 'disabled' : 'required' ?>
+                            <input type="text" id="sertifikat" name="sertifikat" accept=".pdf,.jpg,.jpeg,.png" value="<?= isset($mapDokumen['sertifikat']) ? basename($mapDokumen['sertifikat']) : '' ?>"
+                            <?= isset($mapDokumen['sertifikat']) ? 'readonly' : 'required' ?>
                             class="w-full px-3 py-2 border border-gray-300 rounded-lg file:mr-4 file:py-2 file:px-4 file:border-0 file:text-sm file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200" />
                             <div class="absolute inset-y-0 bottom-12 right-3 flex items-center pointer-events-none">
                                 <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
@@ -126,8 +151,8 @@ if (isset($dokumen)) {
                         <label for="transkrip" class="block text-sm font-medium text-gray-700 mb-1 dark:text-white">Transkrip Nilai / Raport Semester 1-5 (PDF)</label>
                         <?php if (!empty($mapDokumen['transkrip'])): ?>
                             <!-- Jika ada data, tampilkan tombol link untuk lihat file -->
-                            <input type="text" id="transkrip" name="transkrip" accept=".pdf" value="<?= $mapDokumen['transkrip'] ?? '' ?>"
-                            <?= isset($mapDokumen['transkrip']) ? 'disabled' : 'required' ?>
+                            <input type="text" id="transkrip" name="transkrip" accept=".pdf" value="<?= isset($mapDokumen['transkrip']) ? basename($mapDokumen['transkrip']) : '' ?>"
+                            <?= isset($mapDokumen['transkrip']) ? 'readonly' : 'required' ?>
                             class="w-full px-3 py-2 border border-gray-300 rounded-lg file:mr-4 file:py-2 file:px-4 file:border-0 file:text-sm file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200" />
                             <div class="absolute inset-y-0 bottom-12 right-3 flex items-center pointer-events-none">
                                 <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
