@@ -30,7 +30,7 @@
                 <a href="<?= BASE_URL ?>/AuthController" class="px-4 py-2 transition hover:scale-110 text-white">Asesmen Mandiri</a>
                 </div>
 
-                <a href="<?= BASE_URL ?>/AuthController" class="hidden md:inline bg-white px-6 py-1 rounded-full font-bold transition hover:scale-105 text-[#5B6DFF] login-btn">
+                <a href="<?= BASE_URL ?>/AuthController" class="hidden md:inline bg-white px-6 py-1 rounded-full font-bold transition hover:scale-105 text-[#2D336B] login-btn">
                 Login
                 </a>
             </div>
@@ -39,7 +39,7 @@
                 <a href="<?= BASE_URL ?>/AuthController" class="block px-4 py-2 text-white hover:scale-105 hover:underline">Beranda</a>
                 <a href="<?= BASE_URL ?>/AuthController" class="block px-4 py-2 text-white hover:scale-105 hover:underline">Berkas</a>
                 <a href="<?= BASE_URL ?>/AuthController" class="block px-4 py-2 text-white hover:scale-105 hover:underline">Asesmen Mandiri</a>
-                <a href="<?= BASE_URL ?>/AuthController" class="block px-6 py-2 bg-white text-[#5B6DFF] rounded-full font-bold hover:scale-105 transition">Login</a>
+                <a href="<?= BASE_URL ?>/AuthController" class="block px-6 py-2 bg-white text-[#2D336B] rounded-full font-bold hover:scale-105 transition">Login</a>
             </div>
         </nav>
 
@@ -59,7 +59,7 @@
                     Kami hadir untuk memberikan sertifikasi profesi yang berkualitas dan terpercaya untuk siswa-siswi hebat.
                 </p>
                 <a href="#alur-pendaftaran"
-                    class="mt-5 bg-[#5B6DFF] px-7 py-3 border border-transparent rounded-full text-sm sm:text-sm md:text-md lg:text-md font-semibold hover:bg-transparent hover:text-white hover:border hover:border-white transition"
+                    class="mt-5 bg-[#2D336B] px-7 py-3 border border-transparent rounded-full text-sm sm:text-sm md:text-md lg:text-md font-semibold hover:text-white hover:border hover:border-[#2D336B] transition"
                     data-aos="fade-up"
                     data-aos-delay="2300"
                     data-aos-duration="800">
@@ -276,7 +276,7 @@
             </div>
         </footer>
         
-        <a href="#hero" id="scrollTopBtn" class="hidden fixed bottom-6 right-6 z-50 bg-[#5461d6] hover:scale-110 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:bg-[#333858] hover:scale-110">
+        <a href="#hero" id="scrollTopBtn" class="hidden fixed bottom-6 right-6 z-50 bg-[#5461d6] hover:scale-110 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:bg-[#333858]">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
             </svg>

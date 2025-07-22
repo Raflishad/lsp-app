@@ -23,9 +23,7 @@ class Controller {
                 // Tanpa layout, langsung tampilkan file view
                 require_once $viewPath;
             }
-        } else {
-            echo "<p style='color:red;'>View <strong>$view</strong> tidak ditemukan.</p>";
-        }
+        } 
     }
     
 }
