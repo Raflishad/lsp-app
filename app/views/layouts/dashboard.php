@@ -66,7 +66,7 @@
                   </li>
                   <li><a href="dashboard2.html" class="menu-item">Program Keahlian</a>
                   </li>
-                  <li><a href="dashboard2.html" class="menu-item">Proviences</a>
+                  <li><a href="<?= BASE_URL ?>/AdminController/provincies" class="menu-item">Proviences</a>
                   </li>
                   <li><a href="dashboard2.html" class="menu-item">Status</a>
                   </li>
