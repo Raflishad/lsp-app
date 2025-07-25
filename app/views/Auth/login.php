@@ -25,6 +25,8 @@
               
                 
             <form action="<?= BASE_URL ?>/AuthController/login" method="POST" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="1000">
+                <?php require_once '../app/core/helper.php'; ?>
+                <input type="hidden" name="csrf_token" value="<?= CSRF::generateToken(); ?>">
                 <div class="mb-4 text-left">
                     <label for="username" class="block text-sm font-medium text-gray-600 mb-1">Username</label>
                     <input type="username" name='username' id="username" placeholder="Masukkan username" required

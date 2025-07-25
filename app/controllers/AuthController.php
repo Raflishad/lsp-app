@@ -1,5 +1,12 @@
 <?php
+require_once '../app/middleware/CsrfMiddleware.php';
+
 class AuthController extends Controller {
+
+    public function __construct()
+    {
+        CsrfMiddleware::verifyRequest();
+    }
 
     public function index() {
         $data['title'] = 'Login';
@@ -21,6 +28,8 @@ class AuthController extends Controller {
                 $role = 'asesor';
             } elseif ($userModel->isSiswa($idUser)) {
                 $role = 'siswa';
+            } elseif ($userModel->isAdmin($idUser)) {
+                $role = 'admin';
             }
 
             if (!$role) {
@@ -83,4 +92,4 @@ class AuthController extends Controller {
         header('Location: ' . BASE_URL . $path);
         exit;
     }
-}
+} 

@@ -24,6 +24,12 @@ class User {
         return $this->db->single() ? true : false;
     }
 
+    public function isAdmin($id_user) {
+        $this->db->query("SELECT * FROM ADMIN WHERE ID_USER = :id");
+        $this->db->bind(':id', $id_user);
+        return $this->db->single() ? true : false;
+    }
+
     public function registerUser($username, $password, $nama, $email) {
         // Cek apakah username sudah dipakai
         if ($this->getByUsername($username)) return false;

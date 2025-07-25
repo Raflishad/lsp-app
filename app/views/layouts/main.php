@@ -2,7 +2,7 @@
 <html lang="id" class="<?= isset($_COOKIE['theme']) && $_COOKIE['theme'] === 'dark' ? 'dark' : '' ?>">
 <head>
     <meta charset="UTF-8">
-    <title>LSP SMART2 | <?= $title ?></title>
+    <title><?= $title ?> | LSP SMART2</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../../assets/img/logo-smart2.png" type="image/png">
@@ -97,7 +97,7 @@
         if (isset($viewPath) && file_exists($viewPath)) {
             require_once $viewPath;
         } else {
-            echo "<p class='text-red-600'>File tampilan tidak ditemukan.</p>";
+            echo "<p class='text-red-600'>Tidak ada file content.</p>";
         }
         ?>
 

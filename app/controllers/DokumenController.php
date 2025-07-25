@@ -1,10 +1,12 @@
 <?php
 require_once '../app/middleware/AuthMiddleware.php';
+require_once '../app/middleware/CsrfMiddleware.php';
 
 class DokumenController extends Controller {
     private $user;
-
+    
     public function __construct() {
+        CsrfMiddleware::verifyRequest();
         AuthMiddleware::requireRole('siswa');
         $this->user = $_SESSION['user'];
     }

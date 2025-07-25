@@ -7,13 +7,17 @@ if (isset($dokumen)) {
     }
 }
 
-$fullPath = $identitas['URL_KARTU_IDENTITAS'];
-$filename = basename($fullPath);
+$identitas = $identitas ?? [];
+$url = $identitas['URL_KARTU_IDENTITAS'] ?? null;
+$filename = $filename ?? ($url ? basename($url) : '');
+$fullPath = $fullPath ?? $url;
 ?>
 
 <section class="pt-28 pb-16 px-6" id="hero">
             <div class="max-w-3xl mx-auto bg-white dark:bg-[#0c0e24] p-8 rounded-xl shadow-lg">
                 <form id="uploadIdentitasForm" action="<?= BASE_URL ?>/DokumenController/upload" method="POST" enctype="multipart/form-data" class="space-y-6">
+                    <?php require_once '../app/core/Helper.php'; ?>
+                    <input type="hidden" name="csrf_token" value="<?= CSRF::generateToken(); ?>">
                     <h2 class="text-2xl md:text-3xl font-bold text-blue-800 mb-10 text-center dark:text-blue-400">Upload Kartu Identitas</h2>
                     <?php $jenis = $identitas['JENIS_KARTU_IDENTITAS'] ?? ''; ?>
                     <div>
@@ -64,37 +68,41 @@ $filename = basename($fullPath);
                         <?php endif; ?>
                     </div>
                     <div class="relative">
-                        <label for="fileIdentitas" class="block text-sm font-medium text-gray-700 mb-1 dark:text-white">
-                            Unggah Kartu Identitas (PDF/JPG/PNG)
-                        </label>
+    <label for="fileIdentitas" class="block text-sm font-medium text-gray-700 mb-1 dark:text-white">
+        Unggah Kartu Identitas (PDF/JPG/PNG)
+    </label>
 
-                        <?php if (!empty($identitas['URL_KARTU_IDENTITAS'])): ?>
-                            <!-- Jika ada data, tampilkan tombol link untuk lihat file -->
-                            <input type="text" id="fileIdentitas" name="fileIdentitas" accept=".pdf,.jpg,.jpeg,.png" value="<?= $filename ?? '' ?>"
-                            <?= isset($identitas['URL_KARTU_IDENTITAS']) ? 'disabled' : 'required' ?>
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg file:mr-4 file:py-2 file:px-4 file:border-0 file:text-sm file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200" />
-                            <div class="absolute inset-y-0 bottom-12 right-3 flex items-center pointer-events-none">
-                                <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <p class="text-sm text-gray-500 mt-1">Ukuran maksimal 2MB</p>
-                            <a href="<?= BASE_URL . '/' . $fullPath ?>"
-                            target="_blank" 
-                            class="mt-2 text-sm text-blue-700 hover:underline mb-6 inline-block">
-                                Lihat File
-                            </a>
-                        <?php else: ?>
-                            <!-- Jika tidak ada data, tampilkan tombol untuk preview -->
-                            <input type="file" id="fileIdentitas" name="fileIdentitas" accept=".pdf,.jpg,.jpeg,.png" required
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg file:mr-4 file:py-2 file:px-4 file:border-0 file:text-sm file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200" />
-                            <p class="text-sm text-gray-500 mt-1">Ukuran maksimal 2MB</p>
-                            <button type="button" onclick="previewFile('fileIdentitas')" 
-                                    class="mt-2 text-sm text-blue-700 hover:underline mb-6">
-                                Lihat File
-                            </button>
-                        <?php endif; ?>
-                    </div>
+    <?php if (!empty($url)): ?>
+        <!-- Jika ada data, tampilkan input readonly dan link -->
+        <input type="text" id="fileIdentitas" name="fileIdentitas"
+            value="<?= htmlspecialchars($filename) ?>"
+            disabled
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg file:mr-4 file:py-2 file:px-4 file:border-0 file:text-sm file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200" />
+
+        <div class="absolute inset-y-0 bottom-12 right-3 flex items-center pointer-events-none">
+            <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd" />
+            </svg>
+        </div>
+        <p class="text-sm text-gray-500 mt-1">Ukuran maksimal 2MB</p>
+        <?php if (!empty($fullPath)): ?>
+            <a href="<?= BASE_URL . '/' . htmlspecialchars($fullPath) ?>"
+                target="_blank" 
+                class="mt-2 text-sm text-blue-700 hover:underline mb-6 inline-block">
+                Lihat File
+            </a>
+        <?php endif; ?>
+    <?php else: ?>
+        <!-- Jika tidak ada data, tampilkan input file dan tombol preview -->
+        <input type="file" id="fileIdentitas" name="fileIdentitas" accept=".pdf,.jpg,.jpeg,.png" required
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg file:mr-4 file:py-2 file:px-4 file:border-0 file:text-sm file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200" />
+        <p class="text-sm text-gray-500 mt-1">Ukuran maksimal 2MB</p>
+        <button type="button" onclick="previewFile('fileIdentitas')" 
+                class="mt-2 text-sm text-blue-700 hover:underline mb-6">
+            Lihat File
+        </button>
+    <?php endif; ?>
+</div>
 
                 <h2 class="text-2xl md:text-3xl font-bold text-blue-800 my-10 text-center dark:text-blue-400">Upload Dokumen Pendukung</h2>
                     <div class="relative">
