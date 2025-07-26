@@ -10,8 +10,8 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../../assets/app-assets/img/ico/apple-icon-76.png">
     <link rel="apple-touch-icon" sizes="120x120" href="../../assets/app-assets/img/ico/apple-icon-120.png">
     <link rel="apple-touch-icon" sizes="152x152" href="../../assets/app-assets/img/ico/apple-icon-152.png">
-    <link rel="shortcut icon" type="image/x-icon" href="../../assets/app-assets/img/ico/favicon.ico">
-    <link rel="shortcut icon" type="image/png" href="../../assets/app-assets/img/ico/favicon-32.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/logo-smart2.png">
+    <link rel="shortcut icon" type="image/png" href="../../assets/img/logo-smart2.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -24,6 +24,7 @@
     <link rel="stylesheet" type="text/css" href="../../assets/app-assets/vendors/css/perfect-scrollbar.min.css">
     <link rel="stylesheet" type="text/css" href="../../assets/app-assets/vendors/css/prism.min.css">
     <link rel="stylesheet" type="text/css" href="../../assets/app-assets/vendors/css/chartist.min.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/app-assets/vendors/css/tables/datatable/datatables.min.css">
     <!-- END VENDOR CSS-->
     <!-- BEGIN APEX CSS-->
     <link rel="stylesheet" type="text/css" href="../../assets/app-assets/css/app.css">
@@ -45,8 +46,8 @@
         <!-- main menu header-->
         <!-- Sidebar Header starts-->
         <div class="sidebar-header">
-          <div class="logo clearfix"><a href="index.html" class="logo-text float-left">
-              <div class="logo-img"><img src="../../assets/app-assets/img/logo.png"/></div><span class="text align-middle">SMART2</span></a><a id="sidebarToggle" href="javascript:;" class="nav-toggle d-none d-sm-none d-md-none d-lg-block"><i data-toggle="expanded" class="toggle-icon ft-toggle-right"></i></a><a id="sidebarClose" href="javascript:;" class="nav-close d-block d-md-block d-lg-none d-xl-none"><i class="ft-x"></i></a></div>
+          <div class="logo clearfix"><a href="#" class="logo-text float-left">
+              <div class="logo-img "><img src="../../assets/img/logo1.png"/></div></a><a id="sidebarToggle" href="javascript:;" class="nav-toggle d-none d-sm-none d-md-none d-lg-block"><i data-toggle="expanded" class="toggle-icon ft-toggle-right"></i></a><a id="sidebarClose" href="javascript:;" class="nav-close d-block d-md-block d-lg-none d-xl-none"><i class="ft-x"></i></a></div>
         </div>
         <!-- Sidebar Header Ends-->
         <!-- / main menu header-->
@@ -54,7 +55,7 @@
         <div class="sidebar-content">
           <div class="nav-container">
             <ul id="main-menu-navigation" data-menu="menu-navigation" data-scroll-to-active="true" class="navigation navigation-main">
-              <li class="nav-item active"><a href="#"><i class="ft-home"></i><span data-i18n="" class="menu-title">Dashboard</span></a>
+              <li class="nav-item <?= isActive('/AdminController/index') ?>"><a href="<?= BASE_URL ?>/AdminController/index"><i class="ft-home"></i><span data-i18n="" class="menu-title">Dashboard</span></a>
               </li>
               <li class="has-sub nav-item"><a href="#"><i class="ft-home"></i><span data-i18n="" class="menu-title">Master</span></a>
                 <ul class="menu-content">
@@ -66,7 +67,7 @@
                   </li>
                   <li><a href="dashboard2.html" class="menu-item">Program Keahlian</a>
                   </li>
-                  <li><a href="<?= BASE_URL ?>/AdminController/provincies" class="menu-item">Proviences</a>
+                  <li class="menu-item <?= isActive('/AdminController/provinces') ?>"><a href="<?= BASE_URL ?>/AdminController/provinces" class="menu-item">Provinsi</a>
                   </li>
                   <li><a href="dashboard2.html" class="menu-item">Status</a>
                   </li>
@@ -124,7 +125,7 @@
                 <li class="dropdown nav-item"><a id="dropdownBasic3" href="#" data-toggle="dropdown" class="nav-link position-relative dropdown-toggle"><i class="ft-user font-medium-3 blue-grey darken-4"></i>
                     <p class="d-none">User Settings</p></a>
                   <div ngbdropdownmenu="" aria-labelledby="dropdownBasic3" class="dropdown-menu text-left dropdown-menu-right"><a href="../../../html/html/ltr/user-profile-page.html" class="dropdown-item py-1"><i class="ft-edit mr-2"></i><span>Edit Profile</span></a>
-                    <div class="dropdown-divider"></div><a href="../../../html/html/ltr/login-page.html" class="dropdown-item"><i class="ft-power mr-2"></i><span>Logout</span></a>
+                    <div class="dropdown-divider"></div><a href="<?= BASE_URL ?>/AuthController/logout" class="dropdown-item"><i class="ft-power mr-2"></i><span>Logout</span></a>
                   </div>
                 </li>
               </ul>
@@ -290,6 +291,7 @@
     <!-- BEGIN VENDOR JS-->
     <!-- BEGIN PAGE VENDOR JS-->
     <script src="../../assets/app-assets/vendors/js/chartist.min.js" type="text/javascript"></script>
+    <script src="../../assets/app-assets/vendors/js/datatable/datatables.min.js" type="text/javascript"></script>
     <!-- END PAGE VENDOR JS-->
     <!-- BEGIN APEX JS-->
     <script src="../../assets/app-assets/js/app-sidebar.js" type="text/javascript"></script>
@@ -297,6 +299,7 @@
     <script src="../../assets/app-assets/js/customizer.js" type="text/javascript"></script>
     <!-- END APEX JS-->
     <!-- BEGIN PAGE LEVEL JS-->
+    <script src="../../assets/app-assets/js/data-tables/datatable-basic.js" type="text/javascript"></script>
     <script src="../../assets/app-assets/js/dashboard1.js" type="text/javascript"></script>
     <!-- END PAGE LEVEL JS-->
   </body>

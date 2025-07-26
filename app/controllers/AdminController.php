@@ -15,10 +15,10 @@
         $data['title'] = 'Dashboard Admin';
         $this->view('admin/dashboard', $data);
     }
-
-    public function provincies() {
-
-        $data['title'] = 'Master Provincies';
-        $this->view('admin/provincies', $data);
+    
+    public function provinces() {
+        $data['title'] = 'Provinces';
+        $data['provinsi'] = $this->model('Provinces')->getAll();
+        $this->view('admin/provinces/index', $data);
     }
 }

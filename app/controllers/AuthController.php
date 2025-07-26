@@ -21,20 +21,10 @@ class AuthController extends Controller {
         $user = $userModel->getByUsername($username);
 
         if ($user && password_verify($password, $user['PASSWORD'])) {
-            $idUser = $user['ID_USER'];
-            $role = null;
-
-            if ($userModel->isAsesor($idUser)) {
-                $role = 'asesor';
-            } elseif ($userModel->isSiswa($idUser)) {
-                $role = 'siswa';
-            } elseif ($userModel->isAdmin($idUser)) {
-                $role = 'admin';
-            }
+            $role = $this->assignRole($userModel, $user['ID_USER']);
 
             if (!$role) {
-                $_SESSION['error'] = 'Akun belum terdaftar sebagai asesor atau siswa.';
-                return $this->redirect('/AuthController');
+                return $this->redirectWithError('/AuthController', 'Akun belum terdaftar sebagai asesor atau siswa.');
             }
 
             $user['role'] = $role;
@@ -43,8 +33,7 @@ class AuthController extends Controller {
             return $this->redirect("/{$role}Controller/index");
         }
 
-        $_SESSION['error'] = 'Username atau password salah.';
-        return $this->redirect('/AuthController');
+        return $this->redirectWithError('/AuthController', 'Username atau password salah.');
     }
 
     public function register() {
@@ -63,24 +52,21 @@ class AuthController extends Controller {
         $idUser = $userModel->registerUser($username, $password, $nama, $email);
 
         if (!$idUser) {
-            $_SESSION['error'] = "Registrasi gagal. Username mungkin sudah dipakai.";
-            return $this->redirect('/AuthController/register');
+            return $this->redirectWithError('/AuthController/register', 'Registrasi gagal. Username mungkin sudah dipakai.');
         }
 
-        $roleRegistered = false;
-        if ($role === 'asesor') {
-            $roleRegistered = $userModel->registerAsesor($idUser);
-        } elseif ($role === 'siswa') {
-            $roleRegistered = $userModel->registerSiswa($idUser);
-        }
+        $roleRegistered = match ($role) {
+            'asesor' => $userModel->registerAsesor($idUser),
+            'siswa'  => $userModel->registerSiswa($idUser),
+            default  => false
+        };
 
         if ($roleRegistered) {
             $_SESSION['success'] = "Registrasi berhasil. Silakan login.";
             return $this->redirect('/AuthController');
         }
 
-        $_SESSION['error'] = "Gagal menyimpan role.";
-        return $this->redirect('/AuthController/register');
+        return $this->redirectWithError('/AuthController/register', 'Gagal menyimpan role.');
     }
 
     public function logout() {
@@ -92,4 +78,18 @@ class AuthController extends Controller {
         header('Location: ' . BASE_URL . $path);
         exit;
     }
-} 
+
+    private function redirectWithError($path, $message) {
+        $_SESSION['error'] = $message;
+        return $this->redirect($path);
+    }
+
+    private function assignRole($userModel, $idUser) {
+        return match (true) {
+            $userModel->isAsesor($idUser) => 'asesor',
+            $userModel->isSiswa($idUser)  => 'siswa',
+            $userModel->isAdmin($idUser)  => 'admin',
+            default                       => null,
+        };
+    }
+}

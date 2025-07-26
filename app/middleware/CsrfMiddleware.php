@@ -1,7 +1,5 @@
 <?php
 
-require_once '../app/core/Helper.php';
-
 class CsrfMiddleware
 {
     public static function verifyRequest()
