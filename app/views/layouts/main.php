@@ -5,10 +5,9 @@
     <title><?= $title ?> | LSP SMART2</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../../assets/img/logo-smart2.png" type="image/png">
-    <link href="../../assets/css/output.css" rel="stylesheet">
+    <link rel="icon" href="<?= BASE_URL ?>/assets/img/logo-smart2.png" type="image/png">
+    <link href="<?= BASE_URL ?>/assets/css/output.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -26,10 +25,10 @@
 
             <div class="flex items-center justify-between">
                 <!-- Logo untuk Light Mode -->
-                <img src="../../assets/img/logo2.png" alt="Logo" class="h-8 block dark:hidden">
+                <img src="<?= BASE_URL ?>/assets/img/logo2.png" alt="Logo" class="h-8 block dark:hidden">
 
                 <!-- Logo untuk Dark Mode -->
-                <img src="../../assets/img/logo1.png" alt="Logo" class="h-8 hidden dark:block">
+                <img src="<?= BASE_URL ?>/assets/img/logo1.png" alt="Logo" class="h-8 hidden dark:block">
 
 
                 <button id="menu-toggle" class="md:hidden text-blue-600 focus:outline-none">
@@ -105,7 +104,7 @@
             <div class="container mx-auto px-4 text-gray-300">
             <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-8">
                 <div class="flex flex-col items-center md:items-start">
-                    <img src="../../assets/img/logo1.png" alt="Logo" class="w-32 mb-4">
+                    <img src="<?= BASE_URL ?>/assets/img/logo1.png" alt="Logo" class="w-32 mb-4">
                     <p class="text-center md:text-justify lg:text-justify max-w-xs md:max-w-md lg:max-w-xs">
                         Sekolah kami berkomitmen menyediakan pendidikan berkualitas dengan program sertifikasi keahlian resmi dari LSP, mempersiapkan siswa siap bersaing di dunia kerja
                     </p>

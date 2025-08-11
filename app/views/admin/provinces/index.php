@@ -25,16 +25,16 @@
               <tbody>
                 <?php 
                 $no = 1;
-                while ($row = $data['provinsi']->fetch_assoc()) : ?>
+                foreach ($data['provinsi'] as $row): ?>
                 <tr>
                     <td><?= $no++ ?></td>
                     <td><?= $row['NAME_PROVINCES'] ?></td>
                     <td>
                         <a class="success p-0" href="<?= BASE_URL ?>/ProvincesController/edit/<?= $row['ID_PROVINCES'] ?>"><i class="ft-edit-2 font-medium-3 mr-1"></i></a>
-                        <a class="danger p-0" href="<?= BASE_URL ?>/ProvincesController/delete/<?= $row['ID_PROVINCES'] ?>" onclick="return confirm('Yakin?')"><i class="ft-x font-medium-3 mr-1"></i></a>
+                        <a class="border-0 bg-transparent danger p-0 confirm-cancel" data-href="<?= BASE_URL ?>/ProvincesController/delete/<?= $row['ID_PROVINCES'] ?>"><i class="ft-x font-medium-3 mr-1"></i></a>
                     </td>
                 </tr>
-                <?php endwhile; ?>
+                <?php endforeach; ?>
               </tbody>
             </table>
           </div>

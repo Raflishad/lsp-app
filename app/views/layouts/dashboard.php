@@ -6,28 +6,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <title><?= $title?> | LSP SMART2</title>
-    <link rel="apple-touch-icon" sizes="60x60" href="../../assets/app-assets/img/ico/apple-icon-60.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="../../assets/app-assets/img/ico/apple-icon-76.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="../../assets/app-assets/img/ico/apple-icon-120.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="../../assets/app-assets/img/ico/apple-icon-152.png">
-    <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/logo-smart2.png">
-    <link rel="shortcut icon" type="image/png" href="../../assets/img/logo-smart2.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="<?= BASE_URL ?>/assets/app-assets/img/ico/apple-icon-60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="<?= BASE_URL ?>/assets/app-assets/img/ico/apple-icon-76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="<?= BASE_URL ?>/assets/app-assets/img/ico/apple-icon-120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="<?= BASE_URL ?>/assets/app-assets/img/ico/apple-icon-152.png">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= BASE_URL ?>/assets/img/logo-smart2.png">
+    <link rel="shortcut icon" type="image/png" href="<?= BASE_URL ?>/assets/img/logo-smart2.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900|Montserrat:300,400,500,600,700,800,900" rel="stylesheet">
     <!-- BEGIN VENDOR CSS-->
     <!-- font icons-->
-    <link rel="stylesheet" type="text/css" href="../../assets/app-assets/fonts/feather/style.min.css">
-    <link rel="stylesheet" type="text/css" href="../../assets/app-assets/fonts/simple-line-icons/style.css">
-    <link rel="stylesheet" type="text/css" href="../../assets/app-assets/fonts/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="../../assets/app-assets/vendors/css/perfect-scrollbar.min.css">
-    <link rel="stylesheet" type="text/css" href="../../assets/app-assets/vendors/css/prism.min.css">
-    <link rel="stylesheet" type="text/css" href="../../assets/app-assets/vendors/css/chartist.min.css">
-    <link rel="stylesheet" type="text/css" href="../../assets/app-assets/vendors/css/tables/datatable/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/assets/app-assets/fonts/feather/style.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/assets/app-assets/fonts/simple-line-icons/style.css">
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/assets/app-assets/fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/assets/app-assets/vendors/css/perfect-scrollbar.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/assets/app-assets/vendors/css/prism.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/assets/app-assets/vendors/css/chartist.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/assets/app-assets/vendors/css/tables/datatable/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/assets/app-assets/vendors/css/sweetalert2.min.css">
     <!-- END VENDOR CSS-->
     <!-- BEGIN APEX CSS-->
-    <link rel="stylesheet" type="text/css" href="../../assets/app-assets/css/app.css">
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/assets/app-assets/css/app.css">
     <!-- END APEX CSS-->
     <!-- BEGIN Page Level CSS-->
     <!-- END Page Level CSS-->
@@ -42,12 +43,12 @@
 
       <!-- main menu-->
       <!--.main-menu(class="#{menuColor} #{menuOpenType}", class=(menuShadow == true ? 'menu-shadow' : ''))-->
-      <div data-active-color="white" data-background-color="black" data-image="../../assets/app-assets/img/sidebar-bg/01.jpg" class="app-sidebar">
+      <div data-active-color="white" data-background-color="black" data-image="<?= BASE_URL ?>/assets/app-assets/img/sidebar-bg/01.jpg" class="app-sidebar">
         <!-- main menu header-->
         <!-- Sidebar Header starts-->
         <div class="sidebar-header">
           <div class="logo clearfix"><a href="#" class="logo-text float-left">
-              <div class="logo-img "><img src="../../assets/img/logo1.png"/></div></a><a id="sidebarToggle" href="javascript:;" class="nav-toggle d-none d-sm-none d-md-none d-lg-block"><i data-toggle="expanded" class="toggle-icon ft-toggle-right"></i></a><a id="sidebarClose" href="javascript:;" class="nav-close d-block d-md-block d-lg-none d-xl-none"><i class="ft-x"></i></a></div>
+              <div class="logo-img "><img src="<?= BASE_URL ?>/assets/img/logo1.png"/></div></a><a id="sidebarToggle" href="javascript:;" class="nav-toggle d-none d-sm-none d-md-none d-lg-block"><i data-toggle="expanded" class="toggle-icon ft-toggle-right"></i></a><a id="sidebarClose" href="javascript:;" class="nav-close d-block d-md-block d-lg-none d-xl-none"><i class="ft-x"></i></a></div>
         </div>
         <!-- Sidebar Header Ends-->
         <!-- / main menu header-->
@@ -124,7 +125,7 @@
               <ul class="navbar-nav">
                 <li class="dropdown nav-item"><a id="dropdownBasic3" href="#" data-toggle="dropdown" class="nav-link position-relative dropdown-toggle"><i class="ft-user font-medium-3 blue-grey darken-4"></i>
                     <p class="d-none">User Settings</p></a>
-                  <div ngbdropdownmenu="" aria-labelledby="dropdownBasic3" class="dropdown-menu text-left dropdown-menu-right"><a href="../../../html/html/ltr/user-profile-page.html" class="dropdown-item py-1"><i class="ft-edit mr-2"></i><span>Edit Profile</span></a>
+                  <div ngbdropdownmenu="" aria-labelledby="dropdownBasic3" class="dropdown-menu text-left dropdown-menu-right"><a href="<?= BASE_URL ?>/../html/html/ltr/user-profile-page.html" class="dropdown-item py-1"><i class="ft-edit mr-2"></i><span>Edit Profile</span></a>
                     <div class="dropdown-divider"></div><a href="<?= BASE_URL ?>/AuthController/logout" class="dropdown-item"><i class="ft-power mr-2"></i><span>Logout</span></a>
                   </div>
                 </li>
@@ -222,21 +223,21 @@
         <!-- Sidebar BG Image Starts-->
         <h6 class="text-center text-bold-500 mb-3 text-uppercase sb-bg-img">Sidebar Bg Image</h6>
         <div class="cz-bg-image row sb-bg-img">
-          <div class="col-sm-2 mb-3"><img src="../../assets/app-assets/img/sidebar-bg/01.jpg" width="90" class="rounded sb-bg-01"></div>
-          <div class="col-sm-2 mb-3"><img src="../../assets/app-assets/img/sidebar-bg/02.jpg" width="90" class="rounded sb-bg-02"></div>
-          <div class="col-sm-2 mb-3"><img src="../../assets/app-assets/img/sidebar-bg/03.jpg" width="90" class="rounded sb-bg-03"></div>
-          <div class="col-sm-2 mb-3"><img src="../../assets/app-assets/img/sidebar-bg/04.jpg" width="90" class="rounded sb-bg-04"></div>
-          <div class="col-sm-2 mb-3"><img src="../../assets/app-assets/img/sidebar-bg/05.jpg" width="90" class="rounded sb-bg-05"></div>
-          <div class="col-sm-2 mb-3"><img src="../../assets/app-assets/img/sidebar-bg/06.jpg" width="90" class="rounded sb-bg-06"></div>
+          <div class="col-sm-2 mb-3"><img src="<?= BASE_URL ?>/assets/app-assets/img/sidebar-bg/01.jpg" width="90" class="rounded sb-bg-01"></div>
+          <div class="col-sm-2 mb-3"><img src="<?= BASE_URL ?>/assets/app-assets/img/sidebar-bg/02.jpg" width="90" class="rounded sb-bg-02"></div>
+          <div class="col-sm-2 mb-3"><img src="<?= BASE_URL ?>/assets/app-assets/img/sidebar-bg/03.jpg" width="90" class="rounded sb-bg-03"></div>
+          <div class="col-sm-2 mb-3"><img src="<?= BASE_URL ?>/assets/app-assets/img/sidebar-bg/04.jpg" width="90" class="rounded sb-bg-04"></div>
+          <div class="col-sm-2 mb-3"><img src="<?= BASE_URL ?>/assets/app-assets/img/sidebar-bg/05.jpg" width="90" class="rounded sb-bg-05"></div>
+          <div class="col-sm-2 mb-3"><img src="<?= BASE_URL ?>/assets/app-assets/img/sidebar-bg/06.jpg" width="90" class="rounded sb-bg-06"></div>
         </div>
         <!-- Transparent BG Image Ends-->
         <div class="tl-bg-img d-none">
           <h6 class="text-center text-bold-500 text-uppercase">Background Images</h6>
           <div class="cz-tl-bg-image row">
-            <div class="col-sm-3"><img src="../../assets/app-assets/img/gallery/bg-glass-1.jpg" width="90" class="rounded bg-glass-1 selected"></div>
-            <div class="col-sm-3"><img src="../../assets/app-assets/img/gallery/bg-glass-2.jpg" width="90" class="rounded bg-glass-2"></div>
-            <div class="col-sm-3"><img src="../../assets/app-assets/img/gallery/bg-glass-3.jpg" width="90" class="rounded bg-glass-3"></div>
-            <div class="col-sm-3"><img src="../../assets/app-assets/img/gallery/bg-glass-4.jpg" width="90" class="rounded bg-glass-4"></div>
+            <div class="col-sm-3"><img src="<?= BASE_URL ?>/assets/app-assets/img/gallery/bg-glass-1.jpg" width="90" class="rounded bg-glass-1 selected"></div>
+            <div class="col-sm-3"><img src="<?= BASE_URL ?>/assets/app-assets/img/gallery/bg-glass-2.jpg" width="90" class="rounded bg-glass-2"></div>
+            <div class="col-sm-3"><img src="<?= BASE_URL ?>/assets/app-assets/img/gallery/bg-glass-3.jpg" width="90" class="rounded bg-glass-3"></div>
+            <div class="col-sm-3"><img src="<?= BASE_URL ?>/assets/app-assets/img/gallery/bg-glass-4.jpg" width="90" class="rounded bg-glass-4"></div>
           </div>
         </div>
         <!-- Transparent BG Image Ends    -->
@@ -278,30 +279,40 @@
         <!-- Sidebar Width Ends-->
       </div>
     </div>
+    
+    <?php if (!empty($_SESSION['flash_success'])): ?>
+   <script>
+       swal("Success!", "<?= $_SESSION['flash_success'] ?>", "success");
+   </script>
+   <?php unset($_SESSION['flash_success']); ?>
+   <?php endif; ?>
     <!-- Theme customizer Ends-->
     <!-- BEGIN VENDOR JS-->
-    <script src="../../assets/app-assets/vendors/js/core/jquery-3.2.1.min.js" type="text/javascript"></script>
-    <script src="../../assets/app-assets/vendors/js/core/popper.min.js" type="text/javascript"></script>
-    <script src="../../assets/app-assets/vendors/js/core/bootstrap.min.js" type="text/javascript"></script>
-    <script src="../../assets/app-assets/vendors/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
-    <script src="../../assets/app-assets/vendors/js/prism.min.js" type="text/javascript"></script>
-    <script src="../../assets/app-assets/vendors/js/jquery.matchHeight-min.js" type="text/javascript"></script>
-    <script src="../../assets/app-assets/vendors/js/screenfull.min.js" type="text/javascript"></script>
-    <script src="../../assets/app-assets/vendors/js/pace/pace.min.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL ?>/assets/app-assets/vendors/js/core/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL ?>/assets/app-assets/vendors/js/core/popper.min.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL ?>/assets/app-assets/vendors/js/core/bootstrap.min.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL ?>/assets/app-assets/vendors/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL ?>/assets/app-assets/vendors/js/prism.min.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL ?>/assets/app-assets/vendors/js/jquery.matchHeight-min.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL ?>/assets/app-assets/vendors/js/screenfull.min.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL ?>/assets/app-assets/vendors/js/pace/pace.min.js" type="text/javascript"></script>
     <!-- BEGIN VENDOR JS-->
     <!-- BEGIN PAGE VENDOR JS-->
-    <script src="../../assets/app-assets/vendors/js/chartist.min.js" type="text/javascript"></script>
-    <script src="../../assets/app-assets/vendors/js/datatable/datatables.min.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL ?>/assets/app-assets/vendors/js/chartist.min.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL ?>/assets/app-assets/vendors/js/datatable/datatables.min.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL ?>/assets/app-assets/vendors/js/sweetalert2.min.js" type="text/javascript"></script>
     <!-- END PAGE VENDOR JS-->
     <!-- BEGIN APEX JS-->
-    <script src="../../assets/app-assets/js/app-sidebar.js" type="text/javascript"></script>
-    <script src="../../assets/app-assets/js/notification-sidebar.js" type="text/javascript"></script>
-    <script src="../../assets/app-assets/js/customizer.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL ?>/assets/app-assets/js/app-sidebar.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL ?>/assets/app-assets/js/notification-sidebar.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL ?>/assets/app-assets/js/customizer.js" type="text/javascript"></script>
     <!-- END APEX JS-->
     <!-- BEGIN PAGE LEVEL JS-->
-    <script src="../../assets/app-assets/js/data-tables/datatable-basic.js" type="text/javascript"></script>
-    <script src="../../assets/app-assets/js/dashboard1.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL ?>/assets/app-assets/js/data-tables/datatable-basic.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL ?>/assets/app-assets/js/dashboard1.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL ?>/assets/app-assets/js/sweet-alerts.js" type="text/javascript"></script>
     <!-- END PAGE LEVEL JS-->
+
   </body>
   <!-- END : Body-->
 </html>

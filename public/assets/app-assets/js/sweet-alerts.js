@@ -157,7 +157,9 @@ $(document).ready(function () {
   });
 
   // Confirm & Cancel Button
-  $('#confirm-cancel').on('click', function () {
+  $('.confirm-cancel').on('click', function () {
+    var targetUrl = $(this).data('href');
+
     swal({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -171,17 +173,19 @@ $(document).ready(function () {
       cancelButtonClass: 'btn btn-danger btn-raised',
       buttonsStyling: false
     }).then(function () {
-      swal(
-        'Deleted!',
-        'Your imaginary file has been deleted.',
-        'success'
-      )
+        swal({
+              title: 'Deleted!',
+              text: 'Your data has been deleted.',
+              type: 'success',
+            }).then(function () {
+                window.location.href = targetUrl;
+            });
     }, function (dismiss) {
       // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
       if (dismiss === 'cancel') {
         swal(
           'Cancelled',
-          'Your imaginary file is safe :)',
+          'Your data is safe :)',
           'error'
         )
       }

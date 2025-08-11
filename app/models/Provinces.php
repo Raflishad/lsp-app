@@ -3,35 +3,36 @@ class Provinces {
     private $db;
 
     public function __construct() {
-        $this->db = new mysqli('localhost', 'root', '', 'lsp-app'); // ganti sesuai koneksi
+        $this->db = new Database;
     }
 
     public function getAll() {
-        return $this->db->query("SELECT * FROM PROVINCES");
+        $this->db->query("SELECT * FROM PROVINCES");
+        return $this->db->resultSet();
     }
 
     public function getById($id) {
-        $stmt = $this->db->prepare("SELECT * FROM PROVINCES WHERE ID_PROVINCES = ?");
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        return $stmt->get_result()->fetch_assoc();
+        $this->db->query("SELECT * FROM PROVINCES WHERE ID_PROVINCES = :id");
+        $this->db->bind(':id', $id);
+        return $this->db->single();
     }
 
     public function create($name) {
-        $stmt = $this->db->prepare("INSERT INTO PROVINCES (NAME_PROVINCES) VALUES (?)");
-        $stmt->bind_param("s", $name);
-        return $stmt->execute();
+        $this->db->query("INSERT INTO PROVINCES (NAME_PROVINCES) VALUES (:name)");
+        $this->db->bind(':name', $name);
+        return $this->db->execute();
     }
 
     public function update($id, $name) {
-        $stmt = $this->db->prepare("UPDATE PROVINCES SET NAME_PROVINCES = ? WHERE ID_PROVINCES = ?");
-        $stmt->bind_param("si", $name, $id);
-        return $stmt->execute();
+        $this->db->query("UPDATE PROVINCES SET NAME_PROVINCES = :name WHERE ID_PROVINCES = :id");
+        $this->db->bind(':name', $name);
+        $this->db->bind(':id', $id);
+        return $this->db->execute();
     }
 
     public function delete($id) {
-        $stmt = $this->db->prepare("DELETE FROM PROVINCES WHERE ID_PROVINCES = ?");
-        $stmt->bind_param("i", $id);
-        return $stmt->execute();
+        $this->db->query("DELETE FROM PROVINCES WHERE ID_PROVINCES = :id");
+        $this->db->bind(':id', $id);
+        return $this->db->execute();
     }
 }

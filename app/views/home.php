@@ -4,8 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?= $title?></title>
-        <link rel="icon" href="../assets/img/logo-smart2.png" type="image/png">
-        <link href="../assets/css/output.css" rel="stylesheet">
+        <link rel="icon" href="<?= BASE_URL?>/assets/img/logo-smart2.png" type="image/png">
+        <link href="<?= BASE_URL?>/assets/css/output.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
         <script src="https://cdn.tailwindcss.com"></script>
@@ -15,7 +15,7 @@
 
         <nav id="navbar" class="fixed top-6 left-1/2 transform -translate-x-1/2 w-[90%] max-w-full px-6 py-3 z-50 sm:rounded-xl md:rounded-full rounded-full text-white transition-all duration-300 backdrop-blur-xl bg-transparent md:bg-transparent md:backdrop-blur-0">
             <div class="flex items-center justify-between">
-                <img src="../assets/img/logo1.png" alt="Logo" class="h-8">
+                <img src="<?= BASE_URL?>/assets/img/logo1.png" alt="Logo" class="h-8">
 
                 <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -46,20 +46,20 @@
         <div class="relative w-full h-[90vh] sm:h-[95vh] md:h-screen overflow-x-hidden" id="hero">
             <div class="swiper mySwiper absolute top-0 left-0 w-full h-full">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide bg-cover bg-center w-full h-full brightness-50" style="background-image: url('../assets/img/slide1.jpg');"></div>
-                    <div class="swiper-slide bg-cover bg-center w-full h-full brightness-50" style="background-image: url('../assets/img/slide2.jpg');"></div>
-                    <div class="swiper-slide bg-cover bg-center w-full h-full brightness-50" style="background-image: url('../assets/img/slide3.jpg');"></div>
+                    <div class="swiper-slide bg-cover bg-center w-full h-full brightness-[30%]" style="background-image: url('<?= BASE_URL?>/assets/img/slide1.jpg');"></div>
+                    <div class="swiper-slide bg-cover bg-center w-full h-full brightness-[30%]" style="background-image: url('<?= BASE_URL?>/assets/img/slide2.jpg');"></div>
+                    <div class="swiper-slide bg-cover bg-center w-full h-full brightness-[30%]" style="background-image: url('<?= BASE_URL?>/assets/img/slide3.jpg');"></div>
                 </div>
             </div>
             <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6 z-10" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="2000">
-                <h1 class="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold drop-shadow-lg">
-                    Selamat Datang di LSP SMART 2
+                <h1 class="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold drop-shadow-lg">
+                    Selamat Datang di LSP SMART2
                 </h1>
                 <p class="mt-5 text-md sm:text-md md:text-lg lg:text-xl max-w-2xl drop-shadow-md">
                     Kami hadir untuk memberikan sertifikasi profesi yang berkualitas dan terpercaya untuk siswa-siswi hebat.
                 </p>
                 <a href="#alur-pendaftaran"
-                    class="mt-5 bg-[#2D336B] px-7 py-3 border border-transparent rounded-full text-sm sm:text-sm md:text-md lg:text-md font-semibold hover:text-white hover:border hover:border-[#2D336B] transition"
+                    class="mt-5 bg-[#5B6DFF] px-6 py-2 border border-transparent rounded-full text-sm sm:text-sm md:text-md lg:text-md font-medium transition"
                     data-aos="fade-up"
                     data-aos-delay="2300"
                     data-aos-duration="800">
@@ -80,7 +80,7 @@
                 
                 <div class="relative h-96 rounded-xl overflow-hidden shadow-lg cursor-pointer group" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1000">
                     <img
-                        src="../assets/img/card1.jpg"
+                        src="<?= BASE_URL?>/assets/img/card1.jpg"
                         alt="Tujuan 1"
                         class="absolute inset-0 w-full h-full object-cover transition duration-500 transform group-hover:scale-110 group-hover:brightness-110"
                     />
@@ -93,7 +93,7 @@
 
                 <div class="relative h-96 rounded-xl overflow-hidden shadow-lg cursor-pointer group" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1000">
                     <img
-                        src="../assets/img/card2.jpeg"
+                        src="<?= BASE_URL?>/assets/img/card2.jpeg"
                         alt="Tujuan 2"
                         class="absolute inset-0 w-full h-full object-cover transition duration-500 transform group-hover:scale-110 group-hover:brightness-110"
                     />
@@ -106,7 +106,7 @@
 
                 <div class="relative h-96 rounded-xl overflow-hidden shadow-lg cursor-pointer group" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1000">
                     <img
-                        src="../assets/img/card3.jpeg"
+                        src="<?= BASE_URL?>/assets/img/card3.jpeg"
                         alt="Tujuan 3"
                         class="absolute inset-0 w-full h-full object-cover transition duration-500 transform group-hover:scale-110 group-hover:brightness-110"
                     />
@@ -119,7 +119,7 @@
 
                 <div class="relative h-96 rounded-xl overflow-hidden shadow-lg cursor-pointer group"  data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1000">
                     <img
-                        src="../assets/img/card4.jpg"
+                        src="<?= BASE_URL?>/assets/img/card4.jpg"
                         alt="Tujuan 4"
                         class="absolute inset-0 w-full h-full object-cover transition duration-500 transform group-hover:scale-110 group-hover:brightness-110"
                     />
@@ -134,8 +134,8 @@
         
         <div class="bg-[#2D336B] py-10 px-6 sm:px-10 md:px-16 lg:px-20 flex flex-col lg:flex-row items-center lg:items-start gap-8 w-full" id="alur-pendaftaran">
             <div class="relative w-full lg:w-1/2 justify-center pt-6 lg:pt-10 hidden md:hidden lg:flex" data-aos="zoom-out-up" data-aos-delay="200" data-aos-duration="1000">
-                <img src="../assets/img/rounded1.webp" alt="Foto Besar" class="rounded-full w-96 h-96 object-cover shadow-md z-10">
-                <img src="../assets/img/rounded2.jpg" alt="Foto Kecil" class="rounded-full w-56 h-56 object-cover absolute bottom-0 left-24 shadow-md z-20 border-8 border-[#2D336B]">
+                <img src="<?= BASE_URL?>/assets/img/rounded1.webp" alt="Foto Besar" class="rounded-full w-96 h-96 object-cover shadow-md z-10">
+                <img src="<?= BASE_URL?>/assets/img/rounded2.jpg" alt="Foto Kecil" class="rounded-full w-56 h-56 object-cover absolute bottom-0 left-24 shadow-md z-20 border-8 border-[#2D336B]">
             </div>
 
             <div class="text-white w-full lg:w-1/2 py-4 lg:p-0 -ml-0 lg:-ml-14" data-aos="fade-left" data-aos-delay="200" data-aos-duration="1000">
@@ -220,12 +220,12 @@
         <div class="bg-white py-10">
             <div class="container mx-auto px-4 text-center" data-aos="flip-left" data-aos-delay="200" data-aos-duration="1000">
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                    <img src="../assets/img/galeri1.jpeg" alt="Galeri 1" class="w-full h-60 object-cover rounded-xl shadow-md transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl cursor-pointer" />
-                    <img src="../assets/img/galeri2.jpeg" alt="Galeri 2" class="w-full h-60 object-cover rounded-xl shadow-md transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl cursor-pointer" />
-                    <img src="../assets/img/galeri3.jpeg" alt="Galeri 3" class="w-full h-60 object-cover rounded-xl shadow-md transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl cursor-pointer" />
-                    <img src="../assets/img/galeri4.jpeg" alt="Galeri 4" class="w-full h-60 object-cover rounded-xl shadow-md transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl cursor-pointer" />
-                    <img src="../assets/img/galeri5.jpg" alt="Galeri 5" class="w-full h-60 object-cover rounded-xl shadow-md transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl cursor-pointer" />
-                    <img src="../assets/img/galeri6.jpg" alt="Galeri 6" class="w-full h-60 object-cover rounded-xl shadow-md transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl cursor-pointer" />
+                    <img src="<?= BASE_URL?>/assets/img/galeri1.jpeg" alt="Galeri 1" class="w-full h-60 object-cover rounded-xl shadow-md transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl cursor-pointer" />
+                    <img src="<?= BASE_URL?>/assets/img/galeri2.jpeg" alt="Galeri 2" class="w-full h-60 object-cover rounded-xl shadow-md transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl cursor-pointer" />
+                    <img src="<?= BASE_URL?>/assets/img/galeri3.jpeg" alt="Galeri 3" class="w-full h-60 object-cover rounded-xl shadow-md transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl cursor-pointer" />
+                    <img src="<?= BASE_URL?>/assets/img/galeri4.jpeg" alt="Galeri 4" class="w-full h-60 object-cover rounded-xl shadow-md transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl cursor-pointer" />
+                    <img src="<?= BASE_URL?>/assets/img/galeri5.jpg" alt="Galeri 5" class="w-full h-60 object-cover rounded-xl shadow-md transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl cursor-pointer" />
+                    <img src="<?= BASE_URL?>/assets/img/galeri6.jpg" alt="Galeri 6" class="w-full h-60 object-cover rounded-xl shadow-md transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl cursor-pointer" />
                 </div>
             </div>
         </div>      
@@ -234,7 +234,7 @@
             <div class="container mx-auto px-4 text-gray-300">
             <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-8">
                 <div class="flex flex-col items-center md:items-start">
-                    <img src="../assets/img/logo1.png" alt="Logo" class="w-32 mb-4">
+                    <img src="<?= BASE_URL?>/assets/img/logo1.png" alt="Logo" class="w-32 mb-4">
                     <p class="text-center md:text-justify lg:text-justify max-w-xs md:max-w-md lg:max-w-xs">
                         Sekolah kami berkomitmen menyediakan pendidikan berkualitas dengan program sertifikasi keahlian resmi dari LSP, mempersiapkan siswa siap bersaing di dunia kerja
                     </p>

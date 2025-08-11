@@ -7,7 +7,7 @@
     public function __construct()
     {
         AuthMiddleware::requireRole('admin');
-        
+    
     }
 
     public function index() {
