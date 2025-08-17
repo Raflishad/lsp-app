@@ -62,7 +62,7 @@
                 <ul class="menu-content">
                   <li class="menu-item <?= isActive('/AdminController/form') ?>"><a href="<?= BASE_URL ?>/AdminController/form" class="menu-item">Form</a>
                   </li>
-                  <li><a href="dashboard2.html" class="menu-item">Kartu Identitas</a>
+                  <li class="menu-item <?= isActive('/AdminController/kartuIdentitas') ?>"><a href="<?= BASE_URL ?>/AdminController/kartuIdentitas" class="menu-item">Kartu Identitas</a>
                   </li>
                   <li class="menu-item <?= isActive('/AdminController/level') ?>"><a href="<?= BASE_URL ?>/AdminController/level" class="menu-item">Level</a>
                   </li>

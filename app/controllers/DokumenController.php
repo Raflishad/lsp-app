@@ -14,11 +14,7 @@ class DokumenController extends Controller {
     public function upload() {
         $id_user = $this->user['ID_USER'];
 
-        // Ambil ID_SISWA berdasarkan ID_USER (query langsung atau lewat model)
-        $db = new Database();
-        $db->query("SELECT ID_SISWA FROM siswa WHERE ID_USER = :id_user");
-        $db->bind(':id_user', $id_user);
-        $id_siswa = $db->single()['ID_SISWA'];
+        $id_siswa = $this->model('Dokumen')->getIdSiswaByUser($id_user);
 
         // Ambil data identitas
         $jenis = $_POST['jenisIdentitas'];

@@ -33,4 +33,10 @@
         $data['levels'] = $this->model('Level')->getAll();
         $this->view('admin/level/index', $data);
     }
+
+    public function kartuIdentitas() {
+        $data['title'] = 'Kartu Identitas';
+        $data['kartuIdentitas'] = $this->model('KartuIdentitas')->getAll();
+        $this->view('admin/kartuIdentitas/index', $data);
+    }
 }

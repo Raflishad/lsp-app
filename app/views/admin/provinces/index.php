@@ -18,7 +18,7 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Nama Provinsi</th>
+                  <th>Provinsi</th>
                   <th>Aksi</th>
                 </tr>
               </thead>

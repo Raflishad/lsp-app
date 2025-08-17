@@ -18,8 +18,8 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Kode Form</th>
-                  <th>Nama Form</th>
+                  <th>Kode</th>
+                  <th>Nama</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
