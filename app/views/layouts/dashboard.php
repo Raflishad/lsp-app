@@ -60,11 +60,11 @@
               </li>
               <li class="has-sub nav-item"><a href="#"><i class="ft-home"></i><span data-i18n="" class="menu-title">Master</span></a>
                 <ul class="menu-content">
-                  <li><a href="dashboard1.html" class="menu-item">Form</a>
+                  <li class="menu-item <?= isActive('/AdminController/form') ?>"><a href="<?= BASE_URL ?>/AdminController/form" class="menu-item">Form</a>
                   </li>
                   <li><a href="dashboard2.html" class="menu-item">Kartu Identitas</a>
                   </li>
-                  <li><a href="dashboard2.html" class="menu-item">Level</a>
+                  <li class="menu-item <?= isActive('/AdminController/level') ?>"><a href="<?= BASE_URL ?>/AdminController/level" class="menu-item">Level</a>
                   </li>
                   <li><a href="dashboard2.html" class="menu-item">Program Keahlian</a>
                   </li>
@@ -279,13 +279,7 @@
         <!-- Sidebar Width Ends-->
       </div>
     </div>
-    
-    <?php if (!empty($_SESSION['flash_success'])): ?>
-   <script>
-       swal("Success!", "<?= $_SESSION['flash_success'] ?>", "success");
-   </script>
-   <?php unset($_SESSION['flash_success']); ?>
-   <?php endif; ?>
+
     <!-- Theme customizer Ends-->
     <!-- BEGIN VENDOR JS-->
     <script src="<?= BASE_URL ?>/assets/app-assets/vendors/js/core/jquery-3.2.1.min.js" type="text/javascript"></script>
@@ -312,7 +306,18 @@
     <script src="<?= BASE_URL ?>/assets/app-assets/js/dashboard1.js" type="text/javascript"></script>
     <script src="<?= BASE_URL ?>/assets/app-assets/js/sweet-alerts.js" type="text/javascript"></script>
     <!-- END PAGE LEVEL JS-->
-
+    <?php if (!empty($_SESSION['flash_success'])): ?>
+   <script>
+       swal("Success!", "<?= $_SESSION['flash_success'] ?>", "success");
+   </script>
+   <?php unset($_SESSION['flash_success']); ?>
+    <?php elseif (!empty($_SESSION['flash_error'])): ?>
+   <script>
+       swal("Error!", "<?= $_SESSION['flash_error'] ?>", "error");
+   </script>
+   <?php unset($_SESSION['flash_error']); ?>
+   <?php endif; ?>
+    
   </body>
   <!-- END : Body-->
-</html>
+  </html>

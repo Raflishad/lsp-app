@@ -21,4 +21,16 @@
         $data['provinsi'] = $this->model('Provinces')->getAll();
         $this->view('admin/provinces/index', $data);
     }
+
+    public function form() {
+        $data['title'] = 'Form';
+        $data['forms'] = $this->model('Form')->getAll();
+        $this->view('admin/form/index', $data);
+    }
+
+    public function level() {
+        $data['title'] = 'Level';
+        $data['levels'] = $this->model('Level')->getAll();
+        $this->view('admin/level/index', $data);
+    }
 }
