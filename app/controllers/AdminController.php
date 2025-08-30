@@ -39,4 +39,10 @@
         $data['kartuIdentitas'] = $this->model('KartuIdentitas')->getAll();
         $this->view('admin/kartuIdentitas/index', $data);
     }
+
+    public function programKeahlian() {
+        $data['title'] = 'Program Keahlian';
+        $data['programKeahlian'] = $this->model('programKeahlian')->getAll();
+        $this->view('admin/programKeahlian/index', $data);
+    }
 }

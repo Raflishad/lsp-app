@@ -66,7 +66,7 @@
                   </li>
                   <li class="menu-item <?= isActive('/AdminController/level') ?>"><a href="<?= BASE_URL ?>/AdminController/level" class="menu-item">Level</a>
                   </li>
-                  <li><a href="dashboard2.html" class="menu-item">Program Keahlian</a>
+                  <li class="menu-item <?= isActive('/AdminController/programKeahlian') ?>"><a href="<?= BASE_URL ?>/AdminController/programKeahlian" class="menu-item">Program Keahlian</a>
                   </li>
                   <li class="menu-item <?= isActive('/AdminController/provinces') ?>"><a href="<?= BASE_URL ?>/AdminController/provinces" class="menu-item">Provinsi</a>
                   </li>
