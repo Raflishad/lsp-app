@@ -9,9 +9,9 @@
   <div class="row">
     <div class="col-sm-12">
       <div class="card">
-        <div class="card-header">
+        <!-- <div class="card-header">
           <a href="<?= BASE_URL ?>/KartuIdentitasController/create">Tambah Kartu Identitas</a>
-        </div>
+        </div> -->
         <div class="card-content">
           <div class="card-body card-dashboard table-responsive">
             <table class="table text-center table-striped zero-configuration">
@@ -25,30 +25,48 @@
                 </tr>
               </thead>
               <tbody>
-                <?php 
-                $no = 1;
-                foreach ($data['kartuIdentitas'] as $row): ?>
-                <tr>
-                    <td><?= $no++ ?></td>
-                    <td><?= $row['JENIS_KARTU_IDENTITAS'] ?></td>
-                    <td><?= $row['NOMOR_KARTU_IDENTITAS'] ?></td>
-                    <td>
-                        <?php if ($row['URL_KARTU_IDENTITAS']): ?>
-                            <?php $ext = pathinfo($row['URL_KARTU_IDENTITAS'], PATHINFO_EXTENSION); ?>
-                            <?php if (in_array(strtolower($ext), ['jpg','jpeg','png'])): ?>
-                                <img src="<?= BASE_URL ?>/<?= $row['URL_KARTU_IDENTITAS'] ?>" width="100">
-                            <?php else: ?>
-                                <a href="<?= BASE_URL ?>/<?= $row['URL_KARTU_IDENTITAS'] ?>" target="_blank">Lihat File</a>
-                            <?php endif; ?>
-                        <?php endif; ?>
-                    </td>
-                    <td>
-                        <a class="success p-0" href="<?= BASE_URL ?>/KartuIdentitasController/edit/<?= $row['ID_KARTU_IDENTITAS'] ?>"><i class="ft-edit-2 font-medium-3 mr-1"></i></a>
-                        <a class="border-0 bg-transparent danger p-0 confirm-cancel" data-href="<?= BASE_URL ?>/KartuIdentitasController/delete/<?= $row['ID_KARTU_IDENTITAS'] ?>"><i class="ft-x font-medium-3 mr-1"></i></a>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
-              </tbody>
+    <?php 
+    $no = 1;
+    foreach ($data['kartuIdentitas'] as $row): 
+        $fileUrl = BASE_URL . '/' . htmlspecialchars($row['URL_KARTU_IDENTITAS']);
+        $ext = strtolower(pathinfo($row['URL_KARTU_IDENTITAS'], PATHINFO_EXTENSION));
+    ?>
+    <tr>
+        <td><?= $no++ ?></td>
+        <td><?= htmlspecialchars($row['JENIS_KARTU_IDENTITAS']) ?></td>
+        <td><?= htmlspecialchars($row['NOMOR_KARTU_IDENTITAS']) ?></td>
+        <td>
+            <?php if (!empty($row['URL_KARTU_IDENTITAS'])): ?>
+                <?php if (in_array($ext, ['jpg','jpeg','png'])): ?>
+                    <!-- Tampilkan gambar + bisa di klik -->
+                    <a href="<?= $fileUrl ?>" target="_blank">
+                        <img src="<?= $fileUrl ?>" width="100" alt="Kartu Identitas">
+                    </a>
+                <?php elseif ($ext === 'pdf'): ?>
+                    <!-- PDF langsung jadi link -->
+                    <a href="<?= $fileUrl ?>" target="_blank">Lihat File PDF</a>
+                <?php else: ?>
+                    <!-- Format lain fallback -->
+                    <a href="<?= $fileUrl ?>" target="_blank">Lihat File</a>
+                <?php endif; ?>
+            <?php else: ?>
+                <span class="text-muted">Tidak ada file</span>
+            <?php endif; ?>
+        </td>
+        <td>
+            <a class="success p-0" 
+               href="<?= BASE_URL ?>/KartuIdentitasController/edit/<?= $row['ID_KARTU_IDENTITAS'] ?>">
+               <i class="ft-edit-2 font-medium-3 mr-1"></i>
+            </a>
+            <a class="border-0 bg-transparent danger p-0 confirm-cancel" 
+               data-href="<?= BASE_URL ?>/KartuIdentitasController/delete/<?= $row['ID_KARTU_IDENTITAS'] ?>">
+               <i class="ft-x font-medium-3 mr-1"></i>
+            </a>
+        </td>
+    </tr>
+    <?php endforeach; ?>
+</tbody>
+
             </table>
           </div>
         </div>

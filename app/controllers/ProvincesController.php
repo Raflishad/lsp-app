@@ -25,7 +25,7 @@ class ProvincesController extends Controller {
             exit;
         }
 
-        $this->view('admin/provinces/create');
+        $this->view('admin/provinces/create', ['title' => 'Tambah Provinsi']);
     }
 
     public function edit($id) {
@@ -55,6 +55,7 @@ class ProvincesController extends Controller {
         }
 
         $this->view('admin/provinces/edit', [
+            'title' => 'Edit Provinsi',
             'id'   => $id,
             'data' => $province
         ]);

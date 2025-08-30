@@ -25,7 +25,7 @@ class LevelController extends Controller {
             exit;
         }
 
-        $this->view('admin/level/create');
+        $this->view('admin/level/create', ['title' => 'Tambah Level']);
     }
 
     public function edit($id) {
@@ -55,6 +55,7 @@ class LevelController extends Controller {
         }
 
         $this->view('admin/level/edit', [
+            'title' => 'Edit Level',
             'id'   => $id,
             'data' => $level
         ]);

@@ -14,24 +14,33 @@ class KartuIdentitasController extends Controller {
             $jenis = $_POST['jenis'];
             $nomor = $_POST['nomor'];
 
-            // Upload File
             $filePath = null;
             if (!empty($_FILES['file']['name'])) {
                 $allowed = ['pdf','jpg','jpeg','png'];
                 $ext = strtolower(pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION));
+                $maxSize = 2 * 1024 * 1024; // 2 MB (dalam byte)
 
+                // Cek ekstensi
                 if (!in_array($ext, $allowed)) {
-                    die("File tidak valid, hanya PDF/JPG/JPEG/PNG yang diizinkan.");
+                    die("❌ File tidak valid, hanya PDF/JPG/JPEG/PNG yang diizinkan.");
                 }
 
+                // Cek ukuran
+                if ($_FILES['file']['size'] > $maxSize) {
+                    die("❌ Ukuran file maksimal 2 MB.");
+                }
+
+                // Buat folder kalau belum ada
                 $uploadDir = "uploads/kartu_identitas/";
                 if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
 
+                // Simpan file
                 $filePath = $uploadDir . time() . "_" . basename($_FILES['file']['name']);
                 move_uploaded_file($_FILES['file']['tmp_name'], $filePath);
             }
 
             $this->model('KartuIdentitas')->create($jenis, $nomor, $filePath);
+            $_SESSION['flash_success'] = 'Data berhasil diperbarui.';
             header("Location: " . BASE_URL . "/AdminController/kartuIdentitas");
             exit;
         } else {
@@ -72,11 +81,14 @@ class KartuIdentitasController extends Controller {
             }
 
             $model->update($id, $jenis, $nomor, $filePath);
+            $_SESSION['flash_success'] = 'Data berhasil diperbarui.';
             header("Location: " . BASE_URL . "/AdminController/kartuIdentitas");
             exit;
         } else {
             $data = $model->getById($id);
-            $this->view('admin/kartuIdentitas/edit', ['data' => $data]);
+            $this->view('admin/kartuIdentitas/edit', [
+                'title' => 'Edit Kartu Identitas',
+                'data' => $data]);
         }
     }
 

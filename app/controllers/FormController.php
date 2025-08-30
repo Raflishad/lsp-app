@@ -27,7 +27,7 @@ class FormController extends Controller {
             exit;
         }
 
-        $this->view('admin/form/create');
+        $this->view('admin/form/create', ['title' => 'Tambah Form']);
     }
 
     public function edit($id) {
@@ -59,6 +59,7 @@ class FormController extends Controller {
         }
 
         $this->view('admin/form/edit', [
+            'title' => 'Edit Form',
             'id'   => $id,
             'data' => $form
         ]);
