@@ -2,7 +2,7 @@
 require_once '../app/middleware/AuthMiddleware.php';
 require_once '../app/middleware/CsrfMiddleware.php';
 
-class ProvincesController extends Controller {
+class StatusController extends Controller {
 
     public function __construct() {
         AuthMiddleware::requireRole('admin');
@@ -14,48 +14,48 @@ class ProvincesController extends Controller {
 
             $name = trim($_POST['name'] ?? '');
             if ($name === '') {
-                $_SESSION['flash_error'] = 'Provinsi wajib diisi.';
-                header('Location: ' . BASE_URL . '/ProvincesController/create');
+                $_SESSION['flash_error'] = 'Status wajib diisi.';
+                header('Location: ' . BASE_URL . '/StatusController/create');
                 exit;
             }
 
-            $this->model('Provinces')->create($name);
+            $this->model('Status')->create($name);
             $_SESSION['flash_success'] = 'Data berhasil ditambahkan.';
-            header('Location: ' . BASE_URL . '/AdminController/provinces');
+            header('Location: ' . BASE_URL . '/AdminController/status');
             exit;
         }
 
-        $this->view('admin/provinces/create', ['title' => 'Tambah Provinsi']);
+        $this->view('admin/status/create', ['title' => 'Tambah Status']);
     }
 
     public function edit($id) {
-        $model = $this->model('Provinces');
+        $model = $this->model('Status');
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             CsrfMiddleware::verifyRequest();
 
             $name = trim($_POST['name'] ?? '');
             if ($name === '') {
-                $_SESSION['flash_error'] = 'Provinsi wajib diisi.';
-                header('Location: ' . BASE_URL . '/ProvincesController/edit/' . $id);
+                $_SESSION['flash_error'] = 'Status wajib diisi.';
+                header('Location: ' . BASE_URL . '/StatusController/edit/' . $id);
                 exit;
             }
 
             $model->update($id, $name);
             $_SESSION['flash_success'] = 'Data berhasil diperbarui.';
-            header('Location: ' . BASE_URL . '/AdminController/provinces');
+            header('Location: ' . BASE_URL . '/AdminController/status');
             exit;
         }
 
         $province = $model->getById($id);
         if (!$province) {
             $_SESSION['flash_error'] = 'Data tidak ditemukan.';
-            header('Location: ' . BASE_URL . '/AdminController/provinces');
+            header('Location: ' . BASE_URL . '/AdminController/status');
             exit;
         }
 
-        $this->view('admin/provinces/edit', [
-            'title' => 'Edit Provinsi',
+        $this->view('admin/status/edit', [
+            'title' => 'Edit Status',
             'id'   => $id,
             'data' => $province
         ]);
@@ -64,8 +64,8 @@ class ProvincesController extends Controller {
     public function delete($id) {
         CsrfMiddleware::verifyRequest();
 
-        $this->model('Provinces')->delete($id);
-        header('Location: ' . BASE_URL . '/AdminController/provinces');
+        $this->model('Status')->delete($id);
+        header('Location: ' . BASE_URL . '/AdminController/status');
         exit;
     }
 }

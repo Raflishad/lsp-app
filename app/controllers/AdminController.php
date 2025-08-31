@@ -45,4 +45,10 @@
         $data['programKeahlian'] = $this->model('programKeahlian')->getAll();
         $this->view('admin/programKeahlian/index', $data);
     }
+
+    public function status() {
+        $data['title'] = 'Status';
+        $data['status'] = $this->model('status')->getAll();
+        $this->view('admin/status/index', $data);
+    }
 }

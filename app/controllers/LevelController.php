@@ -20,7 +20,7 @@ class LevelController extends Controller {
             }
 
             $this->model('Level')->create($level);
-            $_SESSION['flash_success'] = 'Data level berhasil ditambahkan.';
+            $_SESSION['flash_success'] = 'Data berhasil ditambahkan.';
             header('Location: ' . BASE_URL . '/AdminController/level');
             exit;
         }
@@ -42,14 +42,14 @@ class LevelController extends Controller {
             }
 
             $model->update($id, $level);
-            $_SESSION['flash_success'] = 'Data level berhasil diperbarui.';
+            $_SESSION['flash_success'] = 'Data berhasil diperbarui.';
             header('Location: ' . BASE_URL . '/AdminController/level');
             exit;
         }
 
         $level = $model->getById($id);
         if (!$level) {
-            $_SESSION['flash_error'] = 'Level tidak ditemukan.';
+            $_SESSION['flash_error'] = 'Data tidak ditemukan.';
             header('Location: ' . BASE_URL . '/AdminController/level');
             exit;
         }

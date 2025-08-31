@@ -16,13 +16,13 @@ class FormController extends Controller {
             $kode = trim($_POST['kode'] ?? '');
 
             if ($name === '' || $kode === '') {
-                $_SESSION['flash_error'] = 'Nama dan kode form wajib diisi.';
+                $_SESSION['flash_error'] = 'Form wajib diisi.';
                 header('Location: ' . BASE_URL . '/FormController/create');
                 exit;
             }
 
             $this->model('Form')->create($name, $kode);
-            $_SESSION['flash_success'] = 'Data form berhasil ditambahkan.';
+            $_SESSION['flash_success'] = 'Data berhasil ditambahkan.';
             header('Location: ' . BASE_URL . '/AdminController/form');
             exit;
         }
@@ -40,20 +40,20 @@ class FormController extends Controller {
             $kode = trim($_POST['kode'] ?? '');
 
             if ($name === '' || $kode === '') {
-                $_SESSION['flash_error'] = 'Nama dan kode form wajib diisi.';
+                $_SESSION['flash_error'] = 'Form wajib diisi.';
                 header('Location: ' . BASE_URL . '/FormController/edit/' . $id);
                 exit;
             }
 
             $model->update($id, $name, $kode);
-            $_SESSION['flash_success'] = 'Data form berhasil diperbarui.';
+            $_SESSION['flash_success'] = 'Data berhasil diperbarui.';
             header('Location: ' . BASE_URL . '/AdminController/form');
             exit;
         }
 
         $form = $model->getById($id);
         if (!$form) {
-            $_SESSION['flash_error'] = 'Form tidak ditemukan.';
+            $_SESSION['flash_error'] = 'Data tidak ditemukan.';
             header('Location: ' . BASE_URL . '/AdminController/form');
             exit;
         }

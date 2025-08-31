@@ -70,7 +70,7 @@
                   </li>
                   <li class="menu-item <?= isActive('/AdminController/provinces') ?>"><a href="<?= BASE_URL ?>/AdminController/provinces" class="menu-item">Provinsi</a>
                   </li>
-                  <li><a href="dashboard2.html" class="menu-item">Status</a>
+                  <li class="menu-item <?= isActive('/AdminController/status') ?>"><a href="<?= BASE_URL ?>/AdminController/status" class="menu-item">Status</a>
                   </li>
                 </ul>
               </li>
