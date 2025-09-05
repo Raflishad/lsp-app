@@ -23,10 +23,10 @@
 
                     <input type="hidden" name="id" value="<?= isset($data['ID_FORM']) ?>">
 
-                    <label>Kode Form</label>
+                    <label>Kode</label>
                     <input type="text" class="form-control " name="kode" value="<?= htmlspecialchars($data['KODE_FORM']) ?>" required>
 
-                    <label>Nama Form</label>
+                    <label>Nama</label>
                     <input type="text" class="form-control " name="name" value="<?= htmlspecialchars($data['NAMA_FORM']) ?>" required>
 
                     <div class="mt-3">

@@ -20,10 +20,10 @@
 
                       <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?? '' ?>">
 
-                      <label>Kode Form</label>
+                      <label>Kode</label>
                       <input type="text" class="form-control" name="kode" value="" required>
 
-                      <label>Nama Form</label>
+                      <label>Nama</label>
                       <input type="text" class="form-control" name="name" value="" required>
 
                       <div class="mt-3">

@@ -86,7 +86,7 @@
               </li>
               <li class="nav-item"><a href="color-palette.html"><i class="ft-droplet"></i><span data-i18n="" class="menu-title">Skema</span></a>
               </li>
-              <li class="nav-item"><a href="color-palette.html"><i class="ft-droplet"></i><span data-i18n="" class="menu-title">Unit</span></a>
+              <li class="nav-item <?= isActive('/AdminController/unit') ?>"><a href="<?= BASE_URL ?>/AdminController/unit"><i class="ft-droplet"></i><span data-i18n="" class="menu-title">Unit</span></a>
               </li>
               <li class="nav-item"><a href="color-palette.html"><i class="ft-droplet"></i><span data-i18n="" class="menu-title">Elemen</span></a>
               </li>

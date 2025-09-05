@@ -57,4 +57,10 @@
         $data['regency'] = $this->model('Regency')->getAll();
         $this->view('admin/regency/index', $data);
     }
+
+    public function unit() {
+        $data['title'] = 'Unit';
+        $data['unit'] = $this->model('unit')->getAll();
+        $this->view('admin/unit/index', $data);
+    }
 }

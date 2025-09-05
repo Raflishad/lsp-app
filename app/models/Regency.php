@@ -6,13 +6,12 @@ class Regency {
         $this->db = new Database;
     }
 
-    // Ambil semua regency dengan join provinsi
     public function getAll() {
         $this->db->query("
             SELECT r.*, p.NAME_PROVINCES 
             FROM REGENCIES r
             JOIN PROVINCES p ON r.ID_PROVINCES = p.ID_PROVINCES
-            ORDER BY p.NAME_PROVINCES, r.NAME_REGENCIES
+            ORDER BY r.NAME_REGENCIES
         ");
         return $this->db->resultSet();
     }
