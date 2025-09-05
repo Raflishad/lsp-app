@@ -94,7 +94,7 @@
               </li>
               <li class="nav-item"><a href="color-palette.html"><i class="ft-droplet"></i><span data-i18n="" class="menu-title">Assesmen Mandiri</span></a>
               </li>
-              <li class="nav-item"><a href="color-palette.html"><i class="ft-droplet"></i><span data-i18n="" class="menu-title">Regincies</span></a>
+              <li class="nav-item <?= isActive('/AdminController/regency') ?>"><a href="<?= BASE_URL ?>/AdminController/regency"><i class="ft-droplet"></i><span data-i18n="" class="menu-title">Kabupaten</span></a>
               </li>
             </ul>
           </div>

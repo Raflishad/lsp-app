@@ -63,7 +63,6 @@ class ProvincesController extends Controller {
 
     public function delete($id) {
         CsrfMiddleware::verifyRequest();
-
         $this->model('Provinces')->delete($id);
         header('Location: ' . BASE_URL . '/AdminController/provinces');
         exit;

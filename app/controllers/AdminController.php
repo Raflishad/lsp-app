@@ -51,4 +51,10 @@
         $data['status'] = $this->model('status')->getAll();
         $this->view('admin/status/index', $data);
     }
+
+    public function regency() {
+        $data['title'] = 'Kabupaten';
+        $data['regency'] = $this->model('Regency')->getAll();
+        $this->view('admin/regency/index', $data);
+    }
 }
