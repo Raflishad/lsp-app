@@ -58,7 +58,7 @@
             <ul id="main-menu-navigation" data-menu="menu-navigation" data-scroll-to-active="true" class="navigation navigation-main">
               <li class="nav-item <?= isActive('/AdminController/index') ?>"><a href="<?= BASE_URL ?>/AdminController/index"><i class="ft-home"></i><span data-i18n="" class="menu-title">Dashboard</span></a>
               </li>
-              <li class="has-sub nav-item"><a href="#"><i class="ft-home"></i><span data-i18n="" class="menu-title">Master</span></a>
+              <li class="has-sub nav-item"><a href="#"><i class="icon-screen-desktop"></i><span data-i18n="" class="menu-title">Master</span></a>
                 <ul class="menu-content">
                   <li class="menu-item <?= isActive('/AdminController/form') ?>"><a href="<?= BASE_URL ?>/AdminController/form" class="menu-item">Form</a>
                   </li>
@@ -82,19 +82,19 @@
                     </li>
                     </ul>
               </li>
-              <li class="nav-item"><a href="color-palette.html"><i class="ft-droplet"></i><span data-i18n="" class="menu-title">Dokumen</span></a>
+              <li class="nav-item"><a href="color-palette.html"><i class="icon-docs"></i><span data-i18n="" class="menu-title">Dokumen</span></a>
               </li>
-              <li class="nav-item"><a href="color-palette.html"><i class="ft-droplet"></i><span data-i18n="" class="menu-title">Skema</span></a>
+              <li class="nav-item <?= isActive('/AdminController/skema') ?>"><a href="<?= BASE_URL ?>/AdminController/skema"><i class="icon-layers"></i><span data-i18n="" class="menu-title">Skema</span></a>
               </li>
-              <li class="nav-item <?= isActive('/AdminController/unit') ?>"><a href="<?= BASE_URL ?>/AdminController/unit"><i class="ft-droplet"></i><span data-i18n="" class="menu-title">Unit</span></a>
+              <li class="nav-item <?= isActive('/AdminController/unit') ?>"><a href="<?= BASE_URL ?>/AdminController/unit"><i class="icon-grid"></i><span data-i18n="" class="menu-title">Unit</span></a>
               </li>
               <li class="nav-item"><a href="color-palette.html"><i class="ft-droplet"></i><span data-i18n="" class="menu-title">Elemen</span></a>
               </li>
-              <li class="nav-item"><a href="color-palette.html"><i class="ft-droplet"></i><span data-i18n="" class="menu-title">Pertanyaan</span></a>
+              <li class="nav-item"><a href="color-palette.html"><i class="icon-note"></i><span data-i18n="" class="menu-title">Pertanyaan</span></a>
               </li>
-              <li class="nav-item"><a href="color-palette.html"><i class="ft-droplet"></i><span data-i18n="" class="menu-title">Assesmen Mandiri</span></a>
+              <li class="nav-item"><a href="color-palette.html"><i class="icon-book-open"></i><span data-i18n="" class="menu-title">Assesmen Mandiri</span></a>
               </li>
-              <li class="nav-item <?= isActive('/AdminController/regency') ?>"><a href="<?= BASE_URL ?>/AdminController/regency"><i class="ft-droplet"></i><span data-i18n="" class="menu-title">Kabupaten</span></a>
+              <li class="nav-item <?= isActive('/AdminController/regency') ?>"><a href="<?= BASE_URL ?>/AdminController/regency"><i class="icon-home"></i><span data-i18n="" class="menu-title">Kabupaten</span></a>
               </li>
             </ul>
           </div>

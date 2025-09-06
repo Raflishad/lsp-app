@@ -22,9 +22,9 @@
                       <label>Skema</label>
                         <select name="skemaId" class="form-control" required>
                             <option value="">-- Pilih Skema --</option>
-                            <?php foreach ($provinces as $p): ?>
-                                <option value="<?= $p['ID_SKEMA'] ?>">
-                                    <?= htmlspecialchars($p['NAMA_SKEMA']) ?>
+                            <?php foreach ($skema as $s): ?>
+                                <option value="<?= $s['ID_SKEMA'] ?>">
+                                    <?= htmlspecialchars($s['NAMA_SKEMA']) ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
@@ -37,7 +37,7 @@
                       <input type="text" class="form-control" name="jenis" value="" required>
 
                       <div class="mt-3">
-                        <a href="<?= BASE_URL ?>/AdminController/Unit" class="btn btn-raised btn-warning mr-1">
+                        <a href="<?= BASE_URL ?>/AdminController/unit" class="btn btn-raised btn-warning mr-1">
                           <i class="ft-x"></i> Cancel
                         </a>
                         <button type="submit" class="btn btn-raised btn-primary">

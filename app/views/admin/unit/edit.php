@@ -23,10 +23,10 @@
                     <label>Skema</label>
                     <select name="skemaId" class="form-control" required>
                         <option value="">-- Pilih Skema --</option>
-                        <?php foreach ($provinces as $p): ?>
-                            <option value="<?= $p['ID_SKEMA'] ?>"
-                                <?= ($p['ID_SKEMA'] == $data['ID_SKEMA']) ? 'selected' : '' ?>>
-                                <?= htmlspecialchars($p['NAMA_SKEMA']) ?>
+                        <?php foreach ($skema as $s): ?>
+                            <option value="<?= $s['ID_SKEMA'] ?>"
+                                <?= ($s['ID_SKEMA'] == $data['ID_SKEMA']) ? 'selected' : '' ?>>
+                                <?= htmlspecialchars($s['NAMA_SKEMA']) ?>
                             </option>
                         <?php endforeach; ?>
                     </select>

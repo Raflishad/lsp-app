@@ -63,4 +63,10 @@
         $data['unit'] = $this->model('unit')->getAll();
         $this->view('admin/unit/index', $data);
     }
+
+    public function skema() {
+        $data['title'] = 'Skema';
+        $data['skema'] = $this->model('skema')->getAll();
+        $this->view('admin/skema/index', $data);
+    }
 }

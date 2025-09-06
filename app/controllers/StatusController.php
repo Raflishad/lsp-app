@@ -47,8 +47,8 @@ class StatusController extends Controller {
             exit;
         }
 
-        $province = $model->getById($id);
-        if (!$province) {
+        $status = $model->getById($id);
+        if (!$status) {
             $_SESSION['flash_error'] = 'Data tidak ditemukan.';
             header('Location: ' . BASE_URL . '/AdminController/status');
             exit;
@@ -57,7 +57,7 @@ class StatusController extends Controller {
         $this->view('admin/status/edit', [
             'title' => 'Edit Status',
             'id'   => $id,
-            'data' => $province
+            'data' => $status
         ]);
     }
 
