@@ -48,7 +48,7 @@
         <!-- Sidebar Header starts-->
         <div class="sidebar-header">
           <div class="logo clearfix"><a href="#" class="logo-text float-left">
-              <div class="logo-img "><img src="<?= BASE_URL ?>/assets/img/logo1.png"/></div></a><a id="sidebarToggle" href="javascript:;" class="nav-toggle d-none d-sm-none d-md-none d-lg-block"><i data-toggle="expanded" class="toggle-icon ft-toggle-right"></i></a><a id="sidebarClose" href="javascript:;" class="nav-close d-block d-md-block d-lg-none d-xl-none"><i class="ft-x"></i></a></div>
+              <div class="logo-img"><img src="<?= BASE_URL ?>/assets/img/logo1.png"/></div></a><a id="sidebarToggle" href="javascript:;" class="nav-toggle d-none d-sm-none d-md-none d-lg-block"><i data-toggle="expanded" class="toggle-icon ft-toggle-right"></i></a><a id="sidebarClose" href="javascript:;" class="nav-close d-block d-md-block d-lg-none d-xl-none"><i class="ft-x"></i></a></div>
         </div>
         <!-- Sidebar Header Ends-->
         <!-- / main menu header-->
@@ -56,7 +56,7 @@
         <div class="sidebar-content">
           <div class="nav-container">
             <ul id="main-menu-navigation" data-menu="menu-navigation" data-scroll-to-active="true" class="navigation navigation-main">
-              <li class="nav-item <?= isActive('/AdminController/index') ?>"><a href="<?= BASE_URL ?>/AdminController/index"><i class="ft-home"></i><span data-i18n="" class="menu-title">Dashboard</span></a>
+              <li class="nav-item <?= isActive('/AdminController/index') ?>"><a href="<?= BASE_URL ?>/AdminController/index"><i class="icon-pie-chart"></i><span data-i18n="" class="menu-title">Dashboard</span></a>
               </li>
               <li class="has-sub nav-item"><a href="#"><i class="icon-screen-desktop"></i><span data-i18n="" class="menu-title">Master</span></a>
                 <ul class="menu-content">
@@ -82,15 +82,15 @@
                     </li>
                     </ul>
               </li>
-              <li class="nav-item"><a href="color-palette.html"><i class="icon-docs"></i><span data-i18n="" class="menu-title">Dokumen</span></a>
+              <li class="nav-item <?= isActive('/AdminController/dokumen') ?>"><a href="<?= BASE_URL ?>/AdminController/dokumen"><i class="icon-docs"></i><span data-i18n="" class="menu-title">Dokumen</span></a>
               </li>
               <li class="nav-item <?= isActive('/AdminController/skema') ?>"><a href="<?= BASE_URL ?>/AdminController/skema"><i class="icon-layers"></i><span data-i18n="" class="menu-title">Skema</span></a>
               </li>
               <li class="nav-item <?= isActive('/AdminController/unit') ?>"><a href="<?= BASE_URL ?>/AdminController/unit"><i class="icon-grid"></i><span data-i18n="" class="menu-title">Unit</span></a>
               </li>
-              <li class="nav-item"><a href="color-palette.html"><i class="ft-droplet"></i><span data-i18n="" class="menu-title">Elemen</span></a>
+              <li class="nav-item <?= isActive('/AdminController/elemen') ?>"><a href="<?= BASE_URL ?>/AdminController/elemen"><i class="ft-droplet"></i><span data-i18n="" class="menu-title">Elemen</span></a>
               </li>
-              <li class="nav-item"><a href="color-palette.html"><i class="icon-note"></i><span data-i18n="" class="menu-title">Pertanyaan</span></a>
+              <li class="nav-item <?= isActive('/AdminController/pertanyaan') ?>"><a href="<?= BASE_URL ?>/AdminController/pertanyaan"><i class="icon-note"></i><span data-i18n="" class="menu-title">Pertanyaan</span></a>
               </li>
               <li class="nav-item"><a href="color-palette.html"><i class="icon-book-open"></i><span data-i18n="" class="menu-title">Assesmen Mandiri</span></a>
               </li>

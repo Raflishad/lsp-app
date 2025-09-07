@@ -69,4 +69,23 @@
         $data['skema'] = $this->model('skema')->getAll();
         $this->view('admin/skema/index', $data);
     }
+
+    public function elemen() {
+        $data['title'] = 'Elemen';
+        $data['elemen'] = $this->model('elemen')->getAll();
+        $this->view('admin/elemen/index', $data);
+    }
+
+    public function pertanyaan() {
+        $data['title'] = 'Pertanyaan';
+        $data['pertanyaan'] = $this->model('pertanyaan')->getAll();
+        $this->view('admin/pertanyaan/index', $data);
+    }
+
+    public function dokumen() {
+        $data['title'] = 'Dokumen';
+        $data['dokumen'] = $this->model('dokumenstatus')->getAll();
+        $this->view('admin/dokumen/index', $data);
+    }
+    
 }

@@ -16,7 +16,6 @@ class DokumenController extends Controller {
 
         $id_siswa = $this->model('Dokumen')->getIdSiswaByUser($id_user);
 
-        // Ambil data identitas
         $jenis = $_POST['jenisIdentitas'];
         $nomor = $_POST['nomorKartu'];
 

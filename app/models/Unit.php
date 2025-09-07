@@ -23,22 +23,22 @@ class Unit {
     }
 
     public function create($kode, $judul, $jenis, $skemaId) {
-        $this->db->query("INSERT INTO UNIT (KODE_UNIT, JUDUL_UNIT, JENIS_UNIT, ID_SKEMA) VALUES (:kode, :judul, :jenis, :skemaid)");
+        $this->db->query("INSERT INTO UNIT (KODE_UNIT, JUDUL_UNIT, JENIS_UNIT, ID_SKEMA) VALUES (:kode, :judul, :jenis, :skemaId)");
         $this->db->bind(':kode', $kode);
         $this->db->bind(':judul', $judul);
         $this->db->bind(':jenis', $jenis);
-        $this->db->bind(':skemaid', $skemaId);
+        $this->db->bind(':skemaId', $skemaId);
         return $this->db->execute();
     }
 
     public function update($id, $kode, $judul, $jenis, $skemaId) {
         $this->db->query("UPDATE UNIT 
-                          SET KODE_UNIT = :kode, JUDUL_UNIT = :judul, JENIS_UNIT = :jenis, ID_SKEMA = :skemaid 
+                          SET KODE_UNIT = :kode, JUDUL_UNIT = :judul, JENIS_UNIT = :jenis, ID_SKEMA = :skemaId 
                           WHERE ID_UNIT = :id");
         $this->db->bind(':kode', $kode);
         $this->db->bind(':judul', $judul);
         $this->db->bind(':jenis', $jenis);
-        $this->db->bind(':skemaid', $skemaId);
+        $this->db->bind(':skemaId', $skemaId);
         $this->db->bind(':id', $id);
         return $this->db->execute();
     }
