@@ -87,5 +87,11 @@
         $data['dokumen'] = $this->model('dokumenstatus')->getAll();
         $this->view('admin/dokumen/index', $data);
     }
+
+    public function user() {
+        $data['title'] = 'User';
+        $data['user'] = $this->model('user')->getAll();
+        $this->view('admin/user/index', $data);
+    }   
     
 }

@@ -76,6 +76,8 @@
               </li>
               <li class="has-sub nav-item"><a href="#"><i class="ft-users"></i><span data-i18n="" class="menu-title">User</span></a>
                     <ul class="menu-content">
+                    <li><a class="nav-item <?= isActive('/AdminController/user') ?>" href="<?= BASE_URL ?>/AdminController/user">User</a>
+                    </li>
                     <li><a class="nav-item" href="color-palette.html">Asesor</a>
                     </li>
                     <li><a class="nav-item" href="color-palette.html">Siswa</a>

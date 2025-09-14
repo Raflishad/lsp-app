@@ -6,6 +6,33 @@ class User {
         $this->db = new Database;
     }
 
+    public function getAll() {
+        $this->db->query("SELECT * FROM user ORDER BY ID_USER ASC");
+        return $this->db->resultSet();
+    }
+
+    public function create($data) {
+        $this->db->query("INSERT INTO user 
+            (USERNAME, EMAIL, PASSWORD, NAMA, ALAMAT, KODE_POS, NOMOR_HP, TANGGAL_LAHIR, JENIS_KELAMIN, ID_KARTU_IDENTITAS, ID_REGENCIES) 
+            VALUES 
+            (:username, :email, :password, :nama, :alamat, :kode_pos, :nomor_hp, :tanggal_lahir, :jenis_kelamin, :id_kartu_identitas, :id_regencies)");
+
+        $this->db->bind(':username', $data['username']);
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':password', $data['password']);
+        $this->db->bind(':nama', $data['nama']);
+        $this->db->bind(':alamat', $data['alamat']);
+        $this->db->bind(':kode_pos', $data['kode_pos']);
+        $this->db->bind(':nomor_hp', $data['nomor_hp']);
+        $this->db->bind(':tanggal_lahir', $data['tanggal_lahir']);
+        $this->db->bind(':jenis_kelamin', $data['jenis_kelamin']);
+        $this->db->bind(':id_kartu_identitas', $data['id_kartu_identitas']);
+        $this->db->bind(':id_regencies', $data['id_regencies']);
+
+        return $this->db->execute();
+    }
+
+
     public function getByUsername(string $username): ?array {
         $this->db->query("SELECT * FROM USER WHERE USERNAME = :username");
         $this->db->bind(':username', $username);
@@ -32,7 +59,7 @@ class User {
 
     public function registerUser(string $username, string $password, string $nama, string $email): ?int {
         if ($this->getByUsername($username)) {
-            return null; // Username sudah dipakai
+            return null; 
         }
 
         $this->db->query("
@@ -66,4 +93,6 @@ class User {
         $this->db->bind(':id', $id_user);
         return $this->db->execute();
     }
+
+
 }
