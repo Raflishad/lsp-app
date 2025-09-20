@@ -16,7 +16,7 @@
               <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?? '' ?>">
               <div class="form-group">
                 <label>Pilih File CSV</label>
-                <input type="file" name="file" class="form-control col-8" accept=".csv" required>
+                <input type="file" name="file" class="form-control col-8" accept=".csv, .xlsx, .xls" required>
               </div>
               <button type="submit" class="btn btn-raised btn-primary">
                 <i class="fa fa-upload"></i> Import
@@ -26,7 +26,7 @@
               </a>
             </form>
             <p class="mt-2 text-muted">Format CSV: <br>
-              <code>username,password,nama,email</code>
+              <code>username,email,password,nama</code>
             </p>
           </div>
         </div>
