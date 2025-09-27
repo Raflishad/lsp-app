@@ -2,13 +2,16 @@
 require_once '../app/middleware/AuthMiddleware.php';
 require_once '../app/middleware/CsrfMiddleware.php';
 
-class FormController extends Controller {
+class FormController extends Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         AuthMiddleware::requireRole('admin');
     }
 
-    public function create() {
+    public function create()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             CsrfMiddleware::verifyRequest();
 
@@ -30,7 +33,8 @@ class FormController extends Controller {
         $this->view('admin/form/create', ['title' => 'Tambah Form']);
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $model = $this->model('Form');
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -65,7 +69,8 @@ class FormController extends Controller {
         ]);
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         CsrfMiddleware::verifyRequest();
 
         $this->model('Form')->delete($id);

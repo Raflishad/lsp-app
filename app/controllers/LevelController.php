@@ -2,13 +2,16 @@
 require_once '../app/middleware/AuthMiddleware.php';
 require_once '../app/middleware/CsrfMiddleware.php';
 
-class LevelController extends Controller {
+class LevelController extends Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         AuthMiddleware::requireRole('admin');
     }
 
-    public function create() {
+    public function create()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             CsrfMiddleware::verifyRequest();
 
@@ -28,7 +31,8 @@ class LevelController extends Controller {
         $this->view('admin/level/create', ['title' => 'Tambah Level']);
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $model = $this->model('Level');
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -61,7 +65,8 @@ class LevelController extends Controller {
         ]);
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         CsrfMiddleware::verifyRequest();
 
         $this->model('Level')->delete($id);

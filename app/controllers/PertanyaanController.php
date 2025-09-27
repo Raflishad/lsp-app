@@ -2,13 +2,16 @@
 require_once '../app/middleware/AuthMiddleware.php';
 require_once '../app/middleware/CsrfMiddleware.php';
 
-class PertanyaanController extends Controller {
+class PertanyaanController extends Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         AuthMiddleware::requireRole('admin');
     }
 
-    public function create() {
+    public function create()
+    {
         $formModel   = $this->model('Form');
         $elemenModel = $this->model('Elemen');
 
@@ -39,7 +42,8 @@ class PertanyaanController extends Controller {
         $this->view('admin/pertanyaan/create', $data);
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $model       = $this->model('Pertanyaan');
         $formModel   = $this->model('Form');
         $elemenModel = $this->model('Elemen');
@@ -79,7 +83,8 @@ class PertanyaanController extends Controller {
         $this->view('admin/pertanyaan/edit', $data);
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         CsrfMiddleware::verifyRequest();
         $this->model('Pertanyaan')->delete($id);
         header('Location: ' . BASE_URL . '/AdminController/pertanyaan');

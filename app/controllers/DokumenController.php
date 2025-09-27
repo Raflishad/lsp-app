@@ -2,16 +2,19 @@
 require_once '../app/middleware/AuthMiddleware.php';
 require_once '../app/middleware/CsrfMiddleware.php';
 
-class DokumenController extends Controller {
+class DokumenController extends Controller
+{
     private $user;
-    
-    public function __construct() {
+
+    public function __construct()
+    {
         CsrfMiddleware::verifyRequest();
         AuthMiddleware::requireRole('siswa');
         $this->user = $_SESSION['user'];
     }
 
-    public function upload() {
+    public function upload()
+    {
         $id_user = $this->user['ID_USER'];
 
         $id_siswa = $this->model('Dokumen')->getIdSiswaByUser($id_user);
@@ -52,7 +55,8 @@ class DokumenController extends Controller {
         exit;
     }
 
-    private function uploadFile($field, $uploadDir, $allowedTypes = [], $maxSizeMB = 2) {
+    private function uploadFile($field, $uploadDir, $allowedTypes = [], $maxSizeMB = 2)
+    {
         if (!isset($_FILES[$field]) || $_FILES[$field]['error'] !== UPLOAD_ERR_OK) return false;
 
         $file = $_FILES[$field];
@@ -72,5 +76,4 @@ class DokumenController extends Controller {
 
         return $url;
     }
-
 }

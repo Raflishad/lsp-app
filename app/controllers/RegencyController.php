@@ -2,13 +2,16 @@
 require_once '../app/middleware/AuthMiddleware.php';
 require_once '../app/middleware/CsrfMiddleware.php';
 
-class RegencyController extends Controller {
+class RegencyController extends Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         AuthMiddleware::requireRole('admin');
     }
 
-    public function create() {
+    public function create()
+    {
         $provinceModel = $this->model('Provinces');
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -34,7 +37,8 @@ class RegencyController extends Controller {
         $this->view('admin/regency/create', $data);
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $model = $this->model('Regency');
         $provinceModel = $this->model('Provinces');
 
@@ -68,7 +72,8 @@ class RegencyController extends Controller {
         $this->view('admin/regency/edit', $data);
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         CsrfMiddleware::verifyRequest();
         $this->model('Regency')->delete($id);
         header('Location: ' . BASE_URL . '/AdminController/regency');

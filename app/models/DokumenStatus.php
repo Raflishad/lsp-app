@@ -1,12 +1,15 @@
 <?php
-class DokumenStatus {
+class DokumenStatus
+{
     private $db;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = new Database;
     }
 
-    public function getAll() {
+    public function getAll()
+    {
         $this->db->query("
             SELECT 
                 s.ID_SISWA,
@@ -22,20 +25,23 @@ class DokumenStatus {
         return $this->db->resultSet();
     }
 
-    public function getById($id) {
+    public function getById($id)
+    {
         $this->db->query("SELECT * FROM dokumen WHERE ID_DOKUMEN = :id");
         $this->db->bind(':id', $id);
         return $this->db->single();
     }
 
-    public function update($id, $url) {
+    public function update($id, $url)
+    {
         $this->db->query("UPDATE dokumen SET URL_DOKUMEN = :url WHERE ID_DOKUMEN = :id");
         $this->db->bind(':url', $url);
         $this->db->bind(':id', $id);
         return $this->db->execute();
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $this->db->query("DELETE FROM dokumen WHERE ID_SISWA = :id");
         $this->db->bind(':id', $id);
         return $this->db->execute();

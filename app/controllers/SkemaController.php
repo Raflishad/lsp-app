@@ -2,13 +2,16 @@
 require_once '../app/middleware/AuthMiddleware.php';
 require_once '../app/middleware/CsrfMiddleware.php';
 
-class SkemaController extends Controller {
+class SkemaController extends Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         AuthMiddleware::requireRole('admin');
     }
 
-    public function create() {
+    public function create()
+    {
         $pgModel = $this->model('ProgramKeahlian');
         $levelModel = $this->model('Level');
 
@@ -39,7 +42,8 @@ class SkemaController extends Controller {
         $this->view('admin/skema/create', $data);
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $model = $this->model('Skema');
         $pgModel = $this->model('ProgramKeahlian');
         $levelModel = $this->model('Level');
@@ -78,7 +82,8 @@ class SkemaController extends Controller {
         $this->view('admin/skema/edit', $data);
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         CsrfMiddleware::verifyRequest();
         $this->model('Skema')->delete($id);
         header('Location: ' . BASE_URL . '/AdminController/skema');

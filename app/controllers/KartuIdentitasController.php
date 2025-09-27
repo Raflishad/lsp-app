@@ -2,9 +2,11 @@
 require_once '../app/middleware/AuthMiddleware.php';
 require_once '../app/middleware/CsrfMiddleware.php';
 
-class KartuIdentitasController extends Controller {
+class KartuIdentitasController extends Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         AuthMiddleware::requireRole('admin');
     }
 
@@ -48,7 +50,8 @@ class KartuIdentitasController extends Controller {
     //     }
     // } 
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $model = $this->model('KartuIdentitas');
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             CsrfMiddleware::verifyRequest();
@@ -57,7 +60,7 @@ class KartuIdentitasController extends Controller {
 
             $filePath = null;
             if (!empty($_FILES['file']['name'])) {
-                $allowed = ['pdf','jpg','jpeg','png'];
+                $allowed = ['pdf', 'jpg', 'jpeg', 'png'];
                 $ext = strtolower(pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION));
                 $maxSize = 2 * 1024 * 1024; // 2 MB (dalam byte)
 
@@ -88,11 +91,13 @@ class KartuIdentitasController extends Controller {
             $data = $model->getById($id);
             $this->view('admin/kartuIdentitas/edit', [
                 'title' => 'Edit Kartu Identitas',
-                'data' => $data]);
+                'data' => $data
+            ]);
         }
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         CsrfMiddleware::verifyRequest();
         $this->model('KartuIdentitas')->delete($id);
         header("Location: " . BASE_URL . "/AdminController/kartuIdentitas");

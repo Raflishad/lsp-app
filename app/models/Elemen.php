@@ -1,12 +1,15 @@
 <?php
-class Elemen {
+class Elemen
+{
     private $db;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = new Database;
     }
 
-    public function getAll() {
+    public function getAll()
+    {
         $this->db->query("
             SELECT e.*, u.KODE_UNIT 
             FROM ELEMEN e
@@ -16,13 +19,15 @@ class Elemen {
         return $this->db->resultSet();
     }
 
-    public function getById($id) {
+    public function getById($id)
+    {
         $this->db->query("SELECT * FROM ELEMEN WHERE ID_ELEMEN = :id");
         $this->db->bind(':id', $id);
         return $this->db->single();
     }
 
-    public function create($nomor, $elemen, $unitId) {
+    public function create($nomor, $elemen, $unitId)
+    {
         $this->db->query("INSERT INTO ELEMEN (NOMOR_ELEMEN, ELEMEN, ID_UNIT) VALUES (:nomor, :elemen, :unitId)");
         $this->db->bind(':nomor', $nomor);
         $this->db->bind(':elemen', $elemen);
@@ -30,7 +35,8 @@ class Elemen {
         return $this->db->execute();
     }
 
-    public function update($id, $nomor, $elemen, $unitId) {
+    public function update($id, $nomor, $elemen, $unitId)
+    {
         $this->db->query("UPDATE ELEMEN 
                           SET NOMOR_ELEMEN = :nomor, ELEMEN = :elemen, ID_UNIT = :unitId 
                           WHERE ID_ELEMEN = :id");
@@ -41,7 +47,8 @@ class Elemen {
         return $this->db->execute();
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $this->db->query("DELETE FROM ELEMEN WHERE ID_ELEMEN = :id");
         $this->db->bind(':id', $id);
         return $this->db->execute();

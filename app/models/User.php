@@ -1,23 +1,28 @@
 <?php
-class User {
+class User
+{
     private $db;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = new Database;
     }
 
-    public function getAll() {
+    public function getAll()
+    {
         $this->db->query("SELECT * FROM user ORDER BY ID_USER ASC");
         return $this->db->resultSet();
     }
 
-    public function getById($id) {
+    public function getById($id)
+    {
         $this->db->query("SELECT * FROM user WHERE ID_USER = :id");
         $this->db->bind(':id', $id);
         return $this->db->single();
     }
 
-    public function create($data) {
+    public function create($data)
+    {
         $this->db->query("INSERT INTO user 
             (USERNAME, EMAIL, PASSWORD, NAMA, ALAMAT, KODE_POS, NOMOR_HP, TANGGAL_LAHIR, JENIS_KELAMIN, ID_KARTU_IDENTITAS, ID_REGENCIES) 
             VALUES 
@@ -38,7 +43,8 @@ class User {
         return $this->db->execute();
     }
 
-    public function update($id, $data) {
+    public function update($id, $data)
+    {
         $this->db->query("UPDATE user SET 
             USERNAME = :username, 
             NAMA = :nama, 
@@ -67,40 +73,47 @@ class User {
         return $this->db->execute();
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $this->db->query("DELETE FROM user WHERE ID_USER = :id");
         $this->db->bind(':id', $id);
         return $this->db->execute();
     }
 
 
-    public function getByUsername(string $username): ?array {
+    public function getByUsername(string $username): ?array
+    {
         $this->db->query("SELECT * FROM USER WHERE USERNAME = :username");
         $this->db->bind(':username', $username);
         return $this->db->single();
     }
 
-    public function isAsesor(int $id_user): bool {
+    public function isAsesor(int $id_user): bool
+    {
         return $this->hasRole('ASESOR', $id_user);
     }
 
-    public function isSiswa(int $id_user): bool {
+    public function isSiswa(int $id_user): bool
+    {
         return $this->hasRole('SISWA', $id_user);
     }
 
-    public function isAdmin(int $id_user): bool {
+    public function isAdmin(int $id_user): bool
+    {
         return $this->hasRole('ADMIN', $id_user);
     }
 
-    private function hasRole(string $table, int $id_user): bool {
+    private function hasRole(string $table, int $id_user): bool
+    {
         $this->db->query("SELECT 1 FROM {$table} WHERE ID_USER = :id LIMIT 1");
         $this->db->bind(':id', $id_user);
         return (bool) $this->db->single();
     }
 
-    public function registerUser(string $username, string $password, string $nama, string $email): ?int {
+    public function registerUser(string $username, string $password, string $nama, string $email): ?int
+    {
         if ($this->getByUsername($username)) {
-            return null; 
+            return null;
         }
 
         $this->db->query("
@@ -119,7 +132,8 @@ class User {
         return null;
     }
 
-    public function registerAsesor(int $id_user): bool {
+    public function registerAsesor(int $id_user): bool
+    {
         if ($this->isAsesor($id_user)) return false;
 
         $this->db->query("INSERT INTO ASESOR (ID_USER, ROLE) VALUES (:id, 'asesor')");
@@ -127,13 +141,12 @@ class User {
         return $this->db->execute();
     }
 
-    public function registerSiswa(int $id_user): bool {
+    public function registerSiswa(int $id_user): bool
+    {
         if ($this->isSiswa($id_user)) return false;
 
         $this->db->query("INSERT INTO SISWA (ID_USER) VALUES (:id)");
         $this->db->bind(':id', $id_user);
         return $this->db->execute();
     }
-
-
 }

@@ -2,13 +2,16 @@
 require_once '../app/middleware/AuthMiddleware.php';
 require_once '../app/middleware/CsrfMiddleware.php';
 
-class ProgramKeahlianController extends Controller {
+class ProgramKeahlianController extends Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         AuthMiddleware::requireRole('admin');
     }
 
-    public function create() {
+    public function create()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             CsrfMiddleware::verifyRequest();
 
@@ -28,7 +31,8 @@ class ProgramKeahlianController extends Controller {
         $this->view('admin/programKeahlian/create', ['title' => 'Tambah Program Keahlian']);
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $model = $this->model('ProgramKeahlian');
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -61,7 +65,8 @@ class ProgramKeahlianController extends Controller {
         ]);
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         CsrfMiddleware::verifyRequest();
 
         $this->model('ProgramKeahlian')->delete($id);

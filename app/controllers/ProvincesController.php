@@ -2,13 +2,16 @@
 require_once '../app/middleware/AuthMiddleware.php';
 require_once '../app/middleware/CsrfMiddleware.php';
 
-class ProvincesController extends Controller {
+class ProvincesController extends Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         AuthMiddleware::requireRole('admin');
     }
 
-    public function create() {
+    public function create()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             CsrfMiddleware::verifyRequest();
 
@@ -28,7 +31,8 @@ class ProvincesController extends Controller {
         $this->view('admin/provinces/create', ['title' => 'Tambah Provinsi']);
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $model = $this->model('Provinces');
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -61,7 +65,8 @@ class ProvincesController extends Controller {
         ]);
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         CsrfMiddleware::verifyRequest();
         $this->model('Provinces')->delete($id);
         header('Location: ' . BASE_URL . '/AdminController/provinces');

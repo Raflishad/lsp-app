@@ -1,10 +1,12 @@
 <?php
-class App {
+class App
+{
     protected $controller = 'HomeController'; // Default controller
     protected $method = 'index';              // Default method
     protected $params = [];                   // Parameter dari URL
 
-    public function __construct() {
+    public function __construct()
+    {
         $url = $this->parseURL();
 
         // Cek apakah controller sesuai file yang ada
@@ -12,7 +14,7 @@ class App {
             $this->controller = $url[0];
             unset($url[0]);
         }
-        
+
         if (!file_exists("../app/controllers/{$this->controller}.php")) {
             http_response_code(404);
             require_once '../app/views/errors/404.php';
@@ -38,7 +40,8 @@ class App {
     }
 
     // Ambil dan pecah URL
-    private function parseURL() {
+    private function parseURL()
+    {
         if (isset($_GET['url'])) {
             return explode('/', filter_var(rtrim($_GET['url'], '/'), FILTER_SANITIZE_URL));
         }

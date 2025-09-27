@@ -7,38 +7,41 @@ require_once '../vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
-class UserController extends Controller {
+class UserController extends Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         AuthMiddleware::requireRole('admin');
     }
 
-    public function create() {
+    public function create()
+    {
         $kartuIdentitasModel = $this->model('KartuIdentitas');
         $regencyModel = $this->model('Regency');
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        CsrfMiddleware::verifyRequest();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            CsrfMiddleware::verifyRequest();
 
-        $data = [
-            'username' => trim($_POST['username']),
-            'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
-            'nama' => trim($_POST['nama']),
-            'email' => trim($_POST['email']),
-            'alamat' => trim($_POST['alamat']) ?: null,
-            'kode_pos' => trim($_POST['kode_pos']) ?: null,
-            'nomor_hp' => trim($_POST['nomor_hp']) ?: null,
-            'tanggal_lahir' => $_POST['tanggal_lahir'] ?? null,
-            'jenis_kelamin' => $_POST['jenis_kelamin'] ?? '',
-            'id_kartu_identitas' => intval($_POST['id_kartu_identitas']) ?: null,
-            'id_regencies' => intval($_POST['id_regencies']) ?: null
-        ];
+            $data = [
+                'username' => trim($_POST['username']),
+                'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
+                'nama' => trim($_POST['nama']),
+                'email' => trim($_POST['email']),
+                'alamat' => trim($_POST['alamat']) ?: null,
+                'kode_pos' => trim($_POST['kode_pos']) ?: null,
+                'nomor_hp' => trim($_POST['nomor_hp']) ?: null,
+                'tanggal_lahir' => $_POST['tanggal_lahir'] ?? null,
+                'jenis_kelamin' => $_POST['jenis_kelamin'] ?? '',
+                'id_kartu_identitas' => intval($_POST['id_kartu_identitas']) ?: null,
+                'id_regencies' => intval($_POST['id_regencies']) ?: null
+            ];
 
-        $this->model('User')->create($data);
-        $_SESSION['flash_success'] = 'User berhasil ditambahkan.';
-        header('Location: ' . BASE_URL . '/AdminController/user');
-        exit;
-    }
+            $this->model('User')->create($data);
+            $_SESSION['flash_success'] = 'User berhasil ditambahkan.';
+            header('Location: ' . BASE_URL . '/AdminController/user');
+            exit;
+        }
 
         $data['kartu_identitas'] = $kartuIdentitasModel->getAll();
         $data['regencies'] = $regencyModel->getAll();
@@ -46,7 +49,8 @@ class UserController extends Controller {
         $this->view('admin/user/create', $data);
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $model = $this->model('User');
         $kartuIdentitasModel = $this->model('KartuIdentitas');
         $regencyModel = $this->model('Regency');
@@ -87,14 +91,16 @@ class UserController extends Controller {
         $this->view('admin/user/edit', $data);
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         CsrfMiddleware::verifyRequest();
         $this->model('User')->delete($id);
         header('Location: ' . BASE_URL . '/AdminController/user');
         exit;
     }
 
-    public function import() {
+    public function import()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             CsrfMiddleware::verifyRequest();
 
@@ -136,7 +142,8 @@ class UserController extends Controller {
         $this->view('admin/user/import', $data);
     }
 
-    private function saveUserRow($row, $userModel) {
+    private function saveUserRow($row, $userModel)
+    {
         $data = [
             'username' => trim($row[0] ?? ''),
             'email' => trim($row[1] ?? ''),
@@ -155,5 +162,4 @@ class UserController extends Controller {
             $userModel->create($data);
         }
     }
-
 }

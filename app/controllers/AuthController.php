@@ -1,19 +1,22 @@
 <?php
 require_once '../app/middleware/CsrfMiddleware.php';
 
-class AuthController extends Controller {
+class AuthController extends Controller
+{
 
     public function __construct()
     {
         CsrfMiddleware::verifyRequest();
     }
 
-    public function index() {
+    public function index()
+    {
         $data['title'] = 'Login';
         $this->view('auth/login', $data, false);
     }
 
-    public function login() {
+    public function login()
+    {
         $username = $_POST['username'] ?? '';
         $password = $_POST['password'] ?? '';
 
@@ -36,12 +39,14 @@ class AuthController extends Controller {
         return $this->redirectWithError('/AuthController', 'Username atau password salah.');
     }
 
-    public function register() {
+    public function register()
+    {
         $data['title'] = 'Register';
         $this->view('auth/register', $data, false);
     }
 
-    public function store() {
+    public function store()
+    {
         $username = $_POST['username'] ?? '';
         $password = password_hash($_POST['password'] ?? '', PASSWORD_DEFAULT);
         $nama     = $_POST['nama'] ?? '';
@@ -69,22 +74,26 @@ class AuthController extends Controller {
         return $this->redirectWithError('/AuthController/register', 'Gagal menyimpan role.');
     }
 
-    public function logout() {
+    public function logout()
+    {
         session_destroy();
         $this->redirect('/AuthController');
     }
 
-    private function redirect($path) {
+    private function redirect($path)
+    {
         header('Location: ' . BASE_URL . $path);
         exit;
     }
 
-    private function redirectWithError($path, $message) {
+    private function redirectWithError($path, $message)
+    {
         $_SESSION['error'] = $message;
         return $this->redirect($path);
     }
 
-    private function assignRole($userModel, $idUser) {
+    private function assignRole($userModel, $idUser)
+    {
         return match (true) {
             $userModel->isAsesor($idUser) => 'asesor',
             $userModel->isSiswa($idUser)  => 'siswa',

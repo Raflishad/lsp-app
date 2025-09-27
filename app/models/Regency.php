@@ -1,12 +1,15 @@
 <?php
-class Regency {
+class Regency
+{
     private $db;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = new Database;
     }
 
-    public function getAll() {
+    public function getAll()
+    {
         $this->db->query("
             SELECT r.*, p.NAME_PROVINCES 
             FROM REGENCIES r
@@ -16,20 +19,23 @@ class Regency {
         return $this->db->resultSet();
     }
 
-    public function getById($id) {
+    public function getById($id)
+    {
         $this->db->query("SELECT * FROM REGENCIES WHERE ID_REGENCIES = :id");
         $this->db->bind(':id', $id);
         return $this->db->single();
     }
 
-    public function create($name, $provinceId) {
+    public function create($name, $provinceId)
+    {
         $this->db->query("INSERT INTO REGENCIES (NAME_REGENCIES, ID_PROVINCES) VALUES (:name, :province_id)");
         $this->db->bind(':name', $name);
         $this->db->bind(':province_id', $provinceId);
         return $this->db->execute();
     }
 
-    public function update($id, $name, $provinceId) {
+    public function update($id, $name, $provinceId)
+    {
         $this->db->query("UPDATE REGENCIES 
                           SET NAME_REGENCIES = :name, ID_PROVINCES = :province_id 
                           WHERE ID_REGENCIES = :id");
@@ -39,7 +45,8 @@ class Regency {
         return $this->db->execute();
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $this->db->query("DELETE FROM REGENCIES WHERE ID_REGENCIES = :id");
         $this->db->bind(':id', $id);
         return $this->db->execute();

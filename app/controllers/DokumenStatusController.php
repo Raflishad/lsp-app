@@ -2,13 +2,16 @@
 require_once '../app/middleware/AuthMiddleware.php';
 require_once '../app/middleware/CsrfMiddleware.php';
 
-class DokumenStatusController extends Controller {
+class DokumenStatusController extends Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         AuthMiddleware::requireRole('admin');
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $model = $this->model('Dokumen');
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -34,7 +37,8 @@ class DokumenStatusController extends Controller {
         $this->view('admin/dokumen/edit', $data);
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         CsrfMiddleware::verifyRequest();
         $this->model('Dokumen')->delete($id);
         header('Location: ' . BASE_URL . '/AdminController/dokumen');
